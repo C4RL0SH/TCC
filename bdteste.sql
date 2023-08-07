@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 03/07/2023 às 02:38
+-- Tempo de geração: 07/08/2023 às 05:05
 -- Versão do servidor: 10.4.28-MariaDB
 -- Versão do PHP: 8.2.4
 
@@ -120,27 +120,6 @@ CREATE TABLE `produto` (
   `foto` longblob DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- --------------------------------------------------------
-
---
--- Estrutura para tabela `vendas`
---
-
-CREATE TABLE `vendas` (
-  `forma_de_pagamento` varchar(20) DEFAULT NULL,
-  `faturamento` int(50) DEFAULT NULL,
-  `indice_de_venda` int(30) DEFAULT NULL,
-  `valor_gasto` double DEFAULT NULL,
-  `ano_de_venda` datetime DEFAULT NULL,
-  `mes_de_venda` datetime DEFAULT NULL,
-  `dia_de_venda` datetime DEFAULT NULL,
-  `desconto` double DEFAULT NULL,
-  `acréscimo` double DEFAULT NULL,
-  `desconto_ccd` double DEFAULT NULL,
-  `situacao_venda` varchar(35) DEFAULT NULL,
-  `idvendas` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
-
 --
 -- Índices para tabelas despejadas
 --
@@ -170,12 +149,6 @@ ALTER TABLE `produto`
   ADD PRIMARY KEY (`id_produto`);
 
 --
--- Índices de tabela `vendas`
---
-ALTER TABLE `vendas`
-  ADD PRIMARY KEY (`idvendas`);
-
---
 -- AUTO_INCREMENT para tabelas despejadas
 --
 
@@ -202,12 +175,6 @@ ALTER TABLE `funcionario`
 --
 ALTER TABLE `produto`
   MODIFY `id_produto` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de tabela `vendas`
---
-ALTER TABLE `vendas`
-  MODIFY `idvendas` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

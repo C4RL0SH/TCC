@@ -4,6 +4,7 @@
  */
 package DAO;
 
+import com.toedter.calendar.JDateChooser;
 import connection.ConnectionFactory;
 import java.sql.PreparedStatement;
 import java.sql.Connection;
@@ -131,7 +132,7 @@ public class FuncionarioDAO {
                 f.setTelefone_funcionario(rs.getString("telefone_funcionario"));
                 f.setTelefone2_funcionario(rs.getString("telefone2_funcionario"));
                 f.setIdade_funcionario(rs.getInt("idade_funcionario"));
-                f.setData_nascimento_funcionario(rs.getDate("data_nascimento_funcionario"));
+                f.setData_nascimento_funcionario((java.util.Date) rs.getObject("data_nascimento_funcionario"));
                 f.setSexo_funcionario(rs.getString("sexo_funcionario"));
                 f.setTurno(rs.getString("turno"));
                 f.setCargo(rs.getString("cargo"));

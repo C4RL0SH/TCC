@@ -7,9 +7,7 @@ import java.beans.PropertyVetoException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
-import GUI.cadastrar.*;
-import GUI.Alterar.*;
-import GUI.excluir.*;
+
 /**
  *
  * @author Carlos
@@ -34,7 +32,7 @@ public class Menu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        ImageIcon icon = new ImageIcon(getClass().getResource("/Imagem/MenuFundo.jpeg"));
+        ImageIcon icon = new ImageIcon(getClass().getResource("/Imagem/fundo_menu.png"));
         Image image = icon.getImage();
         jDesktopPane1 = new javax.swing.JDesktopPane(){
 
@@ -44,26 +42,11 @@ public class Menu extends javax.swing.JFrame {
 
         };
         jMenuBar1 = new javax.swing.JMenuBar();
-        a = new javax.swing.JMenu();
-        ClienteC = new javax.swing.JMenuItem();
-        ClienteE = new javax.swing.JMenuItem();
-        ClienteD = new javax.swing.JMenuItem();
-        VisuC = new javax.swing.JMenuItem();
+        cli = new javax.swing.JMenu();
         Estoque = new javax.swing.JMenu();
-        jMenuItem13 = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
-        FunciC = new javax.swing.JMenuItem();
-        FunciE = new javax.swing.JMenuItem();
-        FunciD = new javax.swing.JMenuItem();
-        VisuF = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
-        ProC = new javax.swing.JMenuItem();
-        ProE = new javax.swing.JMenuItem();
-        ProD = new javax.swing.JMenuItem();
-        VisuP = new javax.swing.JMenuItem();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        Funcionario = new javax.swing.JMenu();
+        Produto = new javax.swing.JMenu();
+        Venda = new javax.swing.JMenu();
         Descon = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -79,147 +62,49 @@ public class Menu extends javax.swing.JFrame {
             .addGap(0, 697, Short.MAX_VALUE)
         );
 
-        a.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/group.png"))); // NOI18N
-        a.setText("Cliente");
-
-        ClienteC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/group_add.png"))); // NOI18N
-        ClienteC.setText("Cadastrar");
-        ClienteC.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ClienteCActionPerformed(evt);
+        cli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/group.png"))); // NOI18N
+        cli.setText("Cliente");
+        cli.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cliMouseClicked(evt);
             }
         });
-        a.add(ClienteC);
-
-        ClienteE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/group_edit.png"))); // NOI18N
-        ClienteE.setText("Editar");
-        ClienteE.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ClienteEActionPerformed(evt);
-            }
-        });
-        a.add(ClienteE);
-
-        ClienteD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/group_delete.png"))); // NOI18N
-        ClienteD.setText("Deletar");
-        ClienteD.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ClienteDActionPerformed(evt);
-            }
-        });
-        a.add(ClienteD);
-
-        VisuC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/zoom.png"))); // NOI18N
-        VisuC.setText("Visualizar");
-        a.add(VisuC);
-
-        jMenuBar1.add(a);
+        jMenuBar1.add(cli);
 
         Estoque.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/package.png"))); // NOI18N
         Estoque.setText("Estoque");
-
-        jMenuItem13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/zoom.png"))); // NOI18N
-        jMenuItem13.setText("Visualizar");
-        jMenuItem13.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem13ActionPerformed(evt);
+        Estoque.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                EstoqueMouseClicked(evt);
             }
         });
-        Estoque.add(jMenuItem13);
-
         jMenuBar1.add(Estoque);
 
-        jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/user.png"))); // NOI18N
-        jMenu3.setText("Funcionário");
-
-        FunciC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/user_add.png"))); // NOI18N
-        FunciC.setText("Cadastrar");
-        FunciC.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                FunciCActionPerformed(evt);
+        Funcionario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/user.png"))); // NOI18N
+        Funcionario.setText("Funcionário");
+        Funcionario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                FuncionarioMouseClicked(evt);
             }
         });
-        jMenu3.add(FunciC);
+        jMenuBar1.add(Funcionario);
 
-        FunciE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/user_edit.png"))); // NOI18N
-        FunciE.setText("Editar");
-        FunciE.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                FunciEActionPerformed(evt);
+        Produto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/cart.png"))); // NOI18N
+        Produto.setText("Produto");
+        Produto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ProdutoMouseClicked(evt);
             }
         });
-        jMenu3.add(FunciE);
+        jMenuBar1.add(Produto);
 
-        FunciD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/user_delete.png"))); // NOI18N
-        FunciD.setText("Deletar");
-        FunciD.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                FunciDActionPerformed(evt);
+        Venda.setText("Venda");
+        Venda.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                VendaMouseClicked(evt);
             }
         });
-        jMenu3.add(FunciD);
-
-        VisuF.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/zoom.png"))); // NOI18N
-        VisuF.setText("Visualizar");
-        jMenu3.add(VisuF);
-
-        jMenuBar1.add(jMenu3);
-
-        jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/cart.png"))); // NOI18N
-        jMenu4.setText("Produto");
-
-        ProC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/cart_add.png"))); // NOI18N
-        ProC.setText("Cadastrar");
-        ProC.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ProCActionPerformed(evt);
-            }
-        });
-        jMenu4.add(ProC);
-
-        ProE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/cart_edit.png"))); // NOI18N
-        ProE.setText("Editar");
-        ProE.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ProEActionPerformed(evt);
-            }
-        });
-        jMenu4.add(ProE);
-
-        ProD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/cart_delete.png"))); // NOI18N
-        ProD.setText("Deletar");
-        ProD.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ProDActionPerformed(evt);
-            }
-        });
-        jMenu4.add(ProD);
-
-        VisuP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/zoom.png"))); // NOI18N
-        VisuP.setText("Visualizar");
-        jMenu4.add(VisuP);
-
-        jMenuBar1.add(jMenu4);
-
-        jMenu1.setText("Venda");
-
-        jMenuItem1.setText("Relatório");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jMenuItem1);
-
-        jMenuItem2.setText("Efetuar");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jMenuItem2);
-
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(Venda);
 
         Descon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/door_out.png"))); // NOI18N
         Descon.setText("Desconectar");
@@ -252,77 +137,27 @@ public class Menu extends javax.swing.JFrame {
         t.setVisible(true);
     }//GEN-LAST:event_DesconMouseClicked
 
-    private void ClienteCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClienteCActionPerformed
-    ClienteC t = new ClienteC();
-      jDesktopPane1.add(t);
-      t.setVisible(true);   
-    }//GEN-LAST:event_ClienteCActionPerformed
+    private void FuncionarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FuncionarioMouseClicked
+       funcionario f = new funcionario();
+       jDesktopPane1.add(f);
+       f.setVisible(true);
+    }//GEN-LAST:event_FuncionarioMouseClicked
 
-    private void ClienteEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClienteEActionPerformed
-      ClienteA t = new ClienteA();
-      jDesktopPane1.add(t);
-      t.setVisible(true); 
-    }//GEN-LAST:event_ClienteEActionPerformed
+    private void cliMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cliMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cliMouseClicked
 
-    private void FunciEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FunciEActionPerformed
-      FuncionarioA t = new FuncionarioA();
-      jDesktopPane1.add(t);
-      t.setVisible(true);         
-    }//GEN-LAST:event_FunciEActionPerformed
+    private void EstoqueMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EstoqueMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_EstoqueMouseClicked
 
-    private void FunciCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FunciCActionPerformed
-    FuncionarioC t = new FuncionarioC();
-      jDesktopPane1.add(t);
-      t.setVisible(true);
-    }//GEN-LAST:event_FunciCActionPerformed
+    private void ProdutoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ProdutoMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ProdutoMouseClicked
 
-    private void ProCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProCActionPerformed
-      ProdutoC t = new ProdutoC();
-      jDesktopPane1.add(t);
-      t.setVisible(true);        
-    }//GEN-LAST:event_ProCActionPerformed
-
-    private void ProEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProEActionPerformed
-      ProdutoA t = new ProdutoA();
-      jDesktopPane1.add(t);
-      t.setVisible(true);
-    }//GEN-LAST:event_ProEActionPerformed
-
-    private void ClienteDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClienteDActionPerformed
-      ClienteE t = new ClienteE();
-      jDesktopPane1.add(t);
-      t.setVisible(true);   
-    }//GEN-LAST:event_ClienteDActionPerformed
-
-    private void FunciDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FunciDActionPerformed
-      FuncionarioE t = new FuncionarioE();
-      jDesktopPane1.add(t);
-      t.setVisible(true);   
-    }//GEN-LAST:event_FunciDActionPerformed
-
-    private void ProDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProDActionPerformed
-      ProdutoE t = new ProdutoE();
-      jDesktopPane1.add(t);
-      t.setVisible(true);   
-    }//GEN-LAST:event_ProDActionPerformed
-
-    private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
-     Estoque t = new Estoque();
-      jDesktopPane1.add(t);
-      t.setVisible(true);   
-    }//GEN-LAST:event_jMenuItem13ActionPerformed
-
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-      Relatorio t = new Relatorio();
-      jDesktopPane1.add(t);
-      t.setVisible(true);
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
-
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-       Efetuar t = new Efetuar();
-      jDesktopPane1.add(t);
-      t.setVisible(true);
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    private void VendaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VendaMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_VendaMouseClicked
 
     /**
      * @param args the command line arguments
@@ -362,28 +197,13 @@ public class Menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem ClienteC;
-    private javax.swing.JMenuItem ClienteD;
-    private javax.swing.JMenuItem ClienteE;
     private javax.swing.JMenu Descon;
     private javax.swing.JMenu Estoque;
-    private javax.swing.JMenuItem FunciC;
-    private javax.swing.JMenuItem FunciD;
-    private javax.swing.JMenuItem FunciE;
-    private javax.swing.JMenuItem ProC;
-    private javax.swing.JMenuItem ProD;
-    private javax.swing.JMenuItem ProE;
-    private javax.swing.JMenuItem VisuC;
-    private javax.swing.JMenuItem VisuF;
-    private javax.swing.JMenuItem VisuP;
-    private javax.swing.JMenu a;
+    private javax.swing.JMenu Funcionario;
+    private javax.swing.JMenu Produto;
+    private javax.swing.JMenu Venda;
+    private javax.swing.JMenu cli;
     private javax.swing.JDesktopPane jDesktopPane1;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem13;
-    private javax.swing.JMenuItem jMenuItem2;
     // End of variables declaration//GEN-END:variables
 }

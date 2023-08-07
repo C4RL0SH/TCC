@@ -43,10 +43,13 @@ public class Login extends javax.swing.JFrame {
         sair = new javax.swing.JButton();
         usuario = new javax.swing.JTextField();
         txtSenha = new javax.swing.JPasswordField();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        setTitle("Login");
 
         entrar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         entrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/door_in.png"))); // NOI18N
@@ -56,7 +59,6 @@ public class Login extends javax.swing.JFrame {
                 entrarActionPerformed(evt);
             }
         });
-        getContentPane().add(entrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 250, -1, -1));
 
         sair.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         sair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/door_out.png"))); // NOI18N
@@ -66,12 +68,84 @@ public class Login extends javax.swing.JFrame {
                 sairMouseClicked(evt);
             }
         });
-        getContentPane().add(sair, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 250, 100, -1));
-        getContentPane().add(usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 120, 230, 30));
-        getContentPane().add(txtSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 172, 230, 30));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/Login.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        jPanel1.setBackground(new java.awt.Color(153, 188, 210));
+        jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, java.awt.Color.lightGray, null, null));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 30)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/enter.png"))); // NOI18N
+        jLabel2.setText("LOGIN");
+        jLabel2.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        jLabel2.setFocusable(false);
+        jLabel2.setIconTextGap(5);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(118, 118, 118)
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(127, 127, 127))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
+                .addGap(21, 21, 21))
+        );
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel1.setText("Usuário:");
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel3.setText("Senha:");
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(49, 49, 49)
+                        .addComponent(entrar)
+                        .addGap(78, 78, 78)
+                        .addComponent(sair, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addGap(16, 16, 16)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(entrar)
+                    .addComponent(sair))
+                .addGap(21, 21, 21))
+        );
 
         pack();
         setLocationRelativeTo(null);
@@ -84,23 +158,23 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_sairMouseClicked
 
     private void entrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entrarActionPerformed
-String nome = usuario.getText();
+        String nome = usuario.getText();
         String senha = txtSenha.getText();
         try {
             Class.forName("com.mysql.jdbc.Driver").newInstance();
         try (Connection con = (Connection) 
                 
-                DriverManager.getConnection("jdbc:mysql://localhost/bdapolo","root", ""); 
+                DriverManager.getConnection("jdbc:mysql://localhost/bdteste","root", ""); 
                 Statement stmt = (Statement) con.createStatement()) {
 
             String query = "select * from funcionario where nome_funcionario = '"+nome+"' and senha = '"+senha+"'";
 
                 try (ResultSet rs = stmt.executeQuery(query)) {
                     if (rs.next()) {
-                        int id_funcionário = rs.getInt("id_funcionário");
+                        String cargo = rs.getString("cargo");
                         
                                    
-                        if(id_funcionário == 1){
+                        if(cargo.equals("Gerente")){
                             JOptionPane.showMessageDialog(null,"Conectado com sucesso");
                             Menu s = new Menu();
                             
@@ -108,58 +182,8 @@ String nome = usuario.getText();
                             this.dispose();
                         }
                         
-                        if(id_funcionário == 2){
-                            JOptionPane.showMessageDialog(null,"Conectado com sucesso");
-                            Menu s = new Menu();
-                            
-                            s.setVisible(true);
-                            this.dispose();
-                        }
-                        if(id_funcionário == 3){
-                            JOptionPane.showMessageDialog(null,"Conectado com sucesso");
-                            Menu s = new Menu();
-                            
-                            s.setVisible(true);
-                            this.dispose();
-                        }
                         
-                        if(id_funcionário == 4){
-                            JOptionPane.showMessageDialog(null,"Conectado com sucesso");
-                            Menu s = new Menu();
-                            
-                            s.setVisible(true);
-                            this.dispose();
-                        }
-                        if(id_funcionário == 5){
-                            JOptionPane.showMessageDialog(null,"Conectado com sucesso");
-                            Menu s = new Menu();
-                            
-                            s.setVisible(true);
-                            this.dispose();
-                        }
                         
-                        if(id_funcionário == 6){
-                            JOptionPane.showMessageDialog(null,"Conectado com sucesso");
-                            Menu s = new Menu();
-                            
-                            s.setVisible(true);
-                            this.dispose();
-                        }
-                        if(id_funcionário == 7){
-                            JOptionPane.showMessageDialog(null,"Conectado com sucesso");
-                            Menu s = new Menu();
-                            
-                            s.setVisible(true);
-                            this.dispose();
-                        }
-                        
-                        if(id_funcionário == 8){
-                            JOptionPane.showMessageDialog(null,"Conectado com sucesso");
-                            Menu s = new Menu();
-                            
-                            s.setVisible(true);
-                            this.dispose();
-                        }
                     }
                     
 
@@ -218,6 +242,9 @@ String nome = usuario.getText();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton entrar;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JButton sair;
     private javax.swing.JPasswordField txtSenha;
     private javax.swing.JTextField usuario;
