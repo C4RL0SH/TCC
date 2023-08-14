@@ -4,7 +4,8 @@
  */
 package modelo;
 
-import java.util.Date;
+
+import java.sql.Date;
 import com.toedter.calendar.JDateChooser;
 
 
@@ -32,6 +33,11 @@ public class Funcionario {
     private String foto_funcionario;
     private String senha;
 
+
+    
+
+    
+    
     public int getId_funcionario() {
         return id_funcionario;
     }
