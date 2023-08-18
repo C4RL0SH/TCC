@@ -120,11 +120,10 @@ public class ClienteDAO {
                 c.setCpf_cliente(rs.getString("cpf_cliente"));
                 c.setRg_cliente(rs.getString("rg_cliente"));
                 c.setEmail_cliente(rs.getString("email_cliente"));
-                c.setEndereco_cliente(rs.getString("endereco_cliente"));
-                c.setEndereco_cliente(rs.getString("endereco_cliente"));
-                c.setTelefone_cliente(rs.getString("telefone_cliente"));
-                c.setIdade_cliente(rs.getInt("idade_cliente"));
                 c.setData_nascimento_cliente(rs.getDate("data_nascimento_cliente"));
+                c.setIdade_cliente(rs.getInt("idade_cliente"));
+                c.setTelefone_cliente(rs.getString("telefone_cliente"));
+                c.setEndereco_cliente(rs.getString("endereco_cliente"));
                 c.setSexo_cliente(rs.getString("sexo_cliente"));
             
                 clientes.add(c);
