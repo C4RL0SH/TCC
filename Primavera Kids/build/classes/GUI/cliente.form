@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JInternalFrameFormInfo">
+<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JInternalFrameFormInfo">
   <Properties>
     <Property name="closable" type="boolean" value="true"/>
     <Property name="iconifiable" type="boolean" value="true"/>
@@ -60,7 +60,7 @@
                       <Component id="jLabel5" alignment="0" min="-2" pref="70" max="-2" attributes="0"/>
                       <Component id="jLabel4" alignment="0" min="-2" pref="70" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="cel" alignment="0" max="32767" attributes="0"/>
                       <Component id="end" alignment="0" max="32767" attributes="0"/>
@@ -68,21 +68,21 @@
                       <Component id="nome" alignment="0" max="32767" attributes="0"/>
                       <Component id="data" alignment="0" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabel7" alignment="0" min="-2" pref="72" max="-2" attributes="0"/>
-                      <Component id="jLabel9" alignment="0" min="-2" pref="72" max="-2" attributes="0"/>
-                      <Component id="jLabel11" alignment="0" min="-2" pref="72" max="-2" attributes="0"/>
-                      <Component id="jLabel8" alignment="0" min="-2" pref="72" max="-2" attributes="0"/>
+                      <Component id="jLabel8" min="-2" pref="55" max="-2" attributes="0"/>
+                      <Component id="jLabel7" min="-2" pref="55" max="-2" attributes="0"/>
+                      <Component id="jLabel9" alignment="0" min="-2" pref="55" max="-2" attributes="0"/>
+                      <Component id="jLabel11" min="-2" pref="55" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="sexo" alignment="0" max="32767" attributes="0"/>
+                      <Component id="ida" max="32767" attributes="0"/>
+                      <Component id="sexo" max="32767" attributes="0"/>
                       <Component id="RG" alignment="0" max="32767" attributes="0"/>
-                      <Component id="ida" alignment="0" max="32767" attributes="0"/>
                       <Component id="CPF" alignment="0" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="203" max="-2" attributes="0"/>
               </Group>
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace pref="17" max="32767" attributes="0"/>
@@ -137,26 +137,25 @@
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="2" pref="2" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <Component id="CPF" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
-                                          <Component id="RG" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
-                                          <Component id="ida" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="sexo" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" attributes="0">
-                                          <Component id="jLabel7" min="-2" pref="21" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-                                          <Component id="jLabel8" min="-2" pref="21" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-                                          <Component id="jLabel9" min="-2" pref="21" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-                                          <Component id="jLabel11" min="-2" pref="22" max="-2" attributes="0"/>
-                                      </Group>
+                                  <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="jLabel7" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
+                                      <Component id="CPF" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="jLabel8" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
+                                      <Component id="RG" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="jLabel9" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
+                                      <Component id="ida" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="jLabel11" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                                      <Component id="sexo" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>

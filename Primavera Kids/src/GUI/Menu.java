@@ -21,6 +21,8 @@ public class Menu extends javax.swing.JFrame {
     public Menu() throws PropertyVetoException {
         initComponents();
         this.setExtendedState(MAXIMIZED_BOTH);
+        
+        
     }
 
     /**
@@ -34,7 +36,7 @@ public class Menu extends javax.swing.JFrame {
 
         ImageIcon icon = new ImageIcon(getClass().getResource("/Imagem/fundo_menu.png"));
         Image image = icon.getImage();
-        jDesktopPane1 = new javax.swing.JDesktopPane(){
+        Menu = new javax.swing.JDesktopPane(){
 
             public void paintComponent(Graphics g){
                 g.drawImage(image,0,0,getWidth(),getHeight(),this);
@@ -51,14 +53,14 @@ public class Menu extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
-        jDesktopPane1.setLayout(jDesktopPane1Layout);
-        jDesktopPane1Layout.setHorizontalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout MenuLayout = new javax.swing.GroupLayout(Menu);
+        Menu.setLayout(MenuLayout);
+        MenuLayout.setHorizontalGroup(
+            MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 1280, Short.MAX_VALUE)
         );
-        jDesktopPane1Layout.setVerticalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        MenuLayout.setVerticalGroup(
+            MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 697, Short.MAX_VALUE)
         );
 
@@ -121,11 +123,11 @@ public class Menu extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1)
+            .addComponent(Menu)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1)
+            .addComponent(Menu)
         );
 
         pack();
@@ -139,12 +141,24 @@ public class Menu extends javax.swing.JFrame {
 
     private void FuncionarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FuncionarioMouseClicked
        funcionario f = new funcionario();
-       jDesktopPane1.add(f);
+       Menu.add(f);
        f.setVisible(true);
+        f.show();
+        try {
+        f.setMaximum(true);
+        } catch (PropertyVetoException ex) {
+        }
     }//GEN-LAST:event_FuncionarioMouseClicked
 
     private void cliMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cliMouseClicked
-        // TODO add your handling code here:
+    cliente c = new cliente();
+    Menu.add(c);
+    c.setVisible(true);
+    c.show();
+    try{
+    c.setMaximum(true);
+    } catch (PropertyVetoException ex){
+    }
     }//GEN-LAST:event_cliMouseClicked
 
     private void EstoqueMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EstoqueMouseClicked
@@ -200,10 +214,10 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenu Descon;
     private javax.swing.JMenu Estoque;
     private javax.swing.JMenu Funcionario;
+    private javax.swing.JDesktopPane Menu;
     private javax.swing.JMenu Produto;
     private javax.swing.JMenu Venda;
     private javax.swing.JMenu cli;
-    private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration//GEN-END:variables
 }
