@@ -7,15 +7,13 @@ import java.sql.PreparedStatement;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.*;
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import modelo.Funcionario;
-import GUI.funcionario;
-import java.text.SimpleDateFormat;
+
 
 /**
  *
@@ -28,7 +26,7 @@ public class FuncionarioDAO {
         PreparedStatement stmt = null;
 
         try {
-            stmt = con.prepareStatement("INSERT INTO funcionario(nome_funcionario,email_funcionario,cpf_funcionario,rg_funcionario,data_nascimento_funcionario,idade_funcionario,telefone_funcionario,telefone2_funcionario,endereco_funcionario,sexo_funcionario,turno,cargo,salario,senha,foto_funcionario)VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+            stmt = con.prepareStatement("INSERT INTO funcionario(nome_funcionario,email_funcionario,cpf_funcionario,rg_funcionario,data_nascimento_funcionario,idade_funcionario,telefone_funcionario,telefone2_funcionario,endereco_funcionario,sexo_funcionario,cargo,turno,salario,senha,foto_funcionario)VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
             stmt.setString(1, f.getNome_funcionario());
             stmt.setString(2, f.getEmail_funcionario());
             stmt.setString(3, f.getCpf_funcionario());
@@ -62,7 +60,7 @@ public class FuncionarioDAO {
         PreparedStatement stmt = null;
 
         try {
-            stmt = con.prepareStatement("UPDATE funcionario SET nome_funcionario = ?,email_funcionario= ?,cpf_funcionario = ?,rg_funcionario = ?,data_nascimento_funcionario = ?,idade_funcionario = ?,telefone_funcionario = ?,telefone2_funcionario = ?,endereco_funcionario = ?,sexo_funcionario = ?,turno = ?,cargo = ?,salario = ?,senha = ?,foto_funcionario = ? WHERE id_funcionario = ?");
+            stmt = con.prepareStatement("UPDATE funcionario SET nome_funcionario = ?,email_funcionario= ?,cpf_funcionario = ?,rg_funcionario = ?,data_nascimento_funcionario = ?,idade_funcionario = ?,telefone_funcionario = ?,telefone2_funcionario = ?,endereco_funcionario = ?,sexo_funcionario = ?,cargo = ?,turno = ?,salario = ?,senha = ?,foto_funcionario = ? WHERE id_funcionario = ?");
             stmt.setString(1, f.getNome_funcionario());
             stmt.setString(2, f.getEmail_funcionario());
             stmt.setString(3, f.getCpf_funcionario());
@@ -78,7 +76,7 @@ public class FuncionarioDAO {
             stmt.setDouble(13, f.getSalario());
             stmt.setString(14, f.getSenha());
             stmt.setString(15, f.getFoto_funcionario());
-           
+            stmt.setInt(16, f.getId_funcionario());
             
         stmt.executeUpdate();
             

@@ -166,7 +166,15 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_EstoqueMouseClicked
 
     private void ProdutoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ProdutoMouseClicked
-        // TODO add your handling code here:
+        produto p = new produto();
+        Menu.add(p);
+        p.setVisible(true);
+        p.show();
+        try {
+            p.setMaximum(true);
+        } catch (PropertyVetoException ex) {
+            
+        }
     }//GEN-LAST:event_ProdutoMouseClicked
 
     private void VendaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VendaMouseClicked

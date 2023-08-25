@@ -65,8 +65,8 @@ public class funcionario extends javax.swing.JInternalFrame {
             f.getCargo(),
             f.getTurno(),            
             f.getSalario(),
-            f.getSenha(),
-            f.getFoto_funcionario()
+            f.getSenha()
+            
             
             });
         
@@ -476,11 +476,16 @@ public class funcionario extends javax.swing.JInternalFrame {
        f.setEndereco_funcionario(end.getText());
        f.setTelefone_funcionario(cel.getText());
        f.setTelefone2_funcionario(tel.getText());
-       f.setData_nascimento_funcionario((java.sql.Date) (Date) data.getDate());       
+       
+       //java.util.Date utilDate = data.getDate(); // Obtém a data do JDateChooser
+       //java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime()); // Converte para java.sql.Date
+       //f.setData_nascimento_funcionario(sqlDate); 
+       
+       f.setData_nascimento_funcionario(new java.sql.Date(data.getDate().getTime())); 
        f.setIdade_funcionario(Integer.parseInt(ida.getText()));
-       f.setSexo_funcionario(sexo.getSelectedItem().toString());
-       f.setTurno(tur.getSelectedItem().toString());
+       f.setSexo_funcionario(sexo.getSelectedItem().toString());       
        f.setCargo(car.getSelectedItem().toString());
+       f.setTurno(tur.getSelectedItem().toString());
        f.setSalario(Double.parseDouble(sala.getText()));
        f.setSenha(sen.getText());
        dao.salvar(f);
@@ -504,13 +509,14 @@ public class funcionario extends javax.swing.JInternalFrame {
        f.setEndereco_funcionario(end.getText());
        f.setTelefone_funcionario(cel.getText());
        f.setTelefone2_funcionario(tel.getText());
-       f.setData_nascimento_funcionario((java.sql.Date) (java.util.Date) data.getDate());
+       f.setData_nascimento_funcionario(new java.sql.Date(data.getDate().getTime()));
        f.setIdade_funcionario(Integer.parseInt(ida.getText()));
        f.setSexo_funcionario(sexo.getSelectedItem().toString());
-       f.setTurno(tur.getSelectedItem().toString());
        f.setCargo(car.getSelectedItem().toString());
+       f.setTurno(tur.getSelectedItem().toString());
        f.setSalario(Double.parseDouble(sala.getText()));
        f.setSenha(sen.getText());
+       
        f.setId_funcionario((int)jTable1.getValueAt(jTable1.getSelectedRow(),0));
        dao.atualizar(f);
        
