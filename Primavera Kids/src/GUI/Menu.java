@@ -61,11 +61,15 @@ public class Menu extends javax.swing.JFrame {
         );
         MenuLayout.setVerticalGroup(
             MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 697, Short.MAX_VALUE)
+            .addGap(0, 690, Short.MAX_VALUE)
         );
+
+        jMenuBar1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jMenuBar1.setPreferredSize(new java.awt.Dimension(489, 30));
 
         cli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/group.png"))); // NOI18N
         cli.setText("Cliente");
+        cli.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         cli.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 cliMouseClicked(evt);
@@ -75,6 +79,7 @@ public class Menu extends javax.swing.JFrame {
 
         Estoque.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/package.png"))); // NOI18N
         Estoque.setText("Estoque");
+        Estoque.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         Estoque.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 EstoqueMouseClicked(evt);
@@ -84,6 +89,7 @@ public class Menu extends javax.swing.JFrame {
 
         Funcionario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/user.png"))); // NOI18N
         Funcionario.setText("Funcionário");
+        Funcionario.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         Funcionario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 FuncionarioMouseClicked(evt);
@@ -93,6 +99,7 @@ public class Menu extends javax.swing.JFrame {
 
         Produto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/cart.png"))); // NOI18N
         Produto.setText("Produto");
+        Produto.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         Produto.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 ProdutoMouseClicked(evt);
@@ -101,6 +108,7 @@ public class Menu extends javax.swing.JFrame {
         jMenuBar1.add(Produto);
 
         Venda.setText("Venda");
+        Venda.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         Venda.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 VendaMouseClicked(evt);
@@ -110,6 +118,7 @@ public class Menu extends javax.swing.JFrame {
 
         Descon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/door_out.png"))); // NOI18N
         Descon.setText("Desconectar");
+        Descon.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         Descon.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 DesconMouseClicked(evt);

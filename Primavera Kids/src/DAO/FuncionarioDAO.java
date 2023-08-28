@@ -180,4 +180,40 @@ public class FuncionarioDAO {
         
         return check;
     } 
-}
+     public void pegar(Funcionario f, int Id_funcionairo){
+        
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        try {
+            stmt = con.prepareStatement("SELECT * FROM funcionario WHERE id_funcionario = ?");
+            rs = stmt.executeQuery();
+            while (rs.next()){
+            stmt.setInt(1, Id_funcionairo);
+                
+                f.setId_funcionario(rs.getInt("id_funcionario"));
+                f.setNome_funcionario(rs.getString("nome_funcionario"));
+                f.setEmail_funcionario(rs.getString("email_funcionario"));
+                f.setCpf_funcionario(rs.getString("cpf_funcionario"));
+                f.setRg_funcionario(rs.getString("rg_funcionario"));
+                f.setData_nascimento_funcionario(rs.getDate("data_nascimento_funcionario"));
+                f.setIdade_funcionario(rs.getInt("idade_funcionario"));                
+                f.setTelefone_funcionario(rs.getString("telefone_funcionario"));
+                f.setTelefone2_funcionario(rs.getString("telefone2_funcionario"));
+                f.setEndereco_funcionario(rs.getString("endereco_funcionario"));                
+                f.setSexo_funcionario(rs.getString("sexo_funcionario"));
+                f.setCargo(rs.getString("cargo"));
+                f.setTurno(rs.getString("turno"));                
+                f.setSalario(rs.getDouble("salario"));
+                f.setSenha(rs.getString("senha"));
+                f.setFoto_funcionario(rs.getString("foto_funcionario"));
+                
+            }    
+            } catch (SQLException ex) {
+            Logger.getLogger(FuncionarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+            ConnectionFactory.closeConnection(con, stmt, rs);
+        }}
+     }
+    
+

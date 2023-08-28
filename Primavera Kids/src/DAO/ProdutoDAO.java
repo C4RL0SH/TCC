@@ -1,4 +1,4 @@
-/*
+    /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
@@ -28,10 +28,10 @@ public class ProdutoDAO {
     PreparedStatement stmt = null;
 
         try {
-            stmt = con.prepareStatement("INSERT INTO produto(nome_produto,nome_fornecedor,codigo_produto,data_registro,categoria,quantidade,tamanho,preco_produto,preco_compra,desconto,foto)VALUES(?,?,?,?,?,?,?,?,?,?,?)");
-            stmt.setString(1, p.getNome_produto());
-            stmt.setString(2, p.getNome_fornecedor());
-            stmt.setInt(3, p.getCodigo_produto());
+            stmt = con.prepareStatement("INSERT INTO produto(codigo_produto,nome_produto,nome_fornecedor,data_registro,categoria,quantidade,tamanho,preco_produto,preco_compra,desconto,foto)VALUES(?,?,?,?,?,?,?,?,?,?,?)");
+            stmt.setInt(1, p.getCodigo_produto());
+            stmt.setString(2, p.getNome_produto());
+            stmt.setString(3, p.getNome_fornecedor());            
             stmt.setDate(4, new java.sql.Date (p.getData_registro().getTime()));
             stmt.setString(5, p.getCategoria());
             stmt.setInt(6, p.getQuantidade());
@@ -57,10 +57,10 @@ public class ProdutoDAO {
     PreparedStatement stmt = null;
 
         try {
-            stmt = con.prepareStatement("UPDATE produto SET nome_produto = ?,nome_fornecedor = ?,codigo_produto = ?,data_registro = ?,categoria = ?,quantidade = ?,tamanho = ?,preco_produto = ?,preco_compra = ?,desconto = ? WHERE id_produto = ?");
-            stmt.setString(1, p.getNome_produto());
-            stmt.setString(2, p.getNome_fornecedor());
-            stmt.setInt(3, p.getCodigo_produto());
+            stmt = con.prepareStatement("UPDATE produto SET codigo_produto = ?,nome_produto = ?,nome_fornecedor = ?,data_registro = ?,categoria = ?,quantidade = ?,tamanho = ?,preco_produto = ?,preco_compra = ?,desconto = ? WHERE id_produto = ?");
+            stmt.setInt(1, p.getCodigo_produto());
+            stmt.setString(2, p.getNome_produto());
+            stmt.setString(3, p.getNome_fornecedor());
             stmt.setDate(4, new java.sql.Date (p.getData_registro().getTime()));
             stmt.setString(5, p.getCategoria());
             stmt.setInt(6, p.getQuantidade());
@@ -113,9 +113,9 @@ public class ProdutoDAO {
             
                 Produto p = new Produto();
                 p.setId_produto(rs.getInt("id_produto"));
-                p.setNome_produto(rs.getString("nome_produto"));
-                p.setNome_fornecedor(rs.getString("nome_fornecedor"));
                 p.setCodigo_produto(rs.getInt("codigo_produto"));
+                p.setNome_produto(rs.getString("nome_produto"));
+                p.setNome_fornecedor(rs.getString("nome_fornecedor"));                
                 p.setData_registro(rs.getDate("data_registro"));
                 p.setCategoria(rs.getString("categoria"));
                 p.setQuantidade(rs.getInt("quantidade"));

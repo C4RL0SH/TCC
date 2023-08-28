@@ -41,130 +41,118 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel1" alignment="0" min="-2" pref="70" max="-2" attributes="0"/>
-                  <Component id="jLabel4" alignment="0" min="-2" pref="70" max="-2" attributes="0"/>
                   <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel4" alignment="0" min="-2" pref="70" max="-2" attributes="0"/>
+                  <Component id="jLabel1" alignment="0" min="-2" pref="70" max="-2" attributes="0"/>
+                  <Component id="jLabel5" alignment="0" min="-2" pref="70" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="2" attributes="0">
+                  <Component id="tama" alignment="2" pref="149" max="32767" attributes="0"/>
+                  <Component id="cate" alignment="2" max="32767" attributes="0"/>
+                  <Component id="fornecedor" alignment="2" max="32767" attributes="0"/>
+                  <Component id="nome" alignment="2" max="32767" attributes="0"/>
+                  <Component id="cod" alignment="2" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="fornecedor" pref="172" max="32767" attributes="0"/>
-                  <Component id="nome" max="32767" attributes="0"/>
-                  <Component id="cate" max="32767" attributes="0"/>
-                  <Component id="tama" max="32767" attributes="0"/>
+                  <Component id="jLabel11" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel10" alignment="0" min="-2" pref="72" max="-2" attributes="0"/>
+                  <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel9" alignment="0" max="32767" attributes="0"/>
+                  <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jLabel10" min="-2" pref="72" max="-2" attributes="0"/>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                      <Component id="data" pref="0" max="32767" attributes="0"/>
-                      <EmptySpace min="2" pref="2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="jLabel9" max="32767" attributes="0"/>
-                              <Component id="jLabel8" alignment="1" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="jLabel11" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="Quant" pref="160" max="32767" attributes="0"/>
-                          <Component id="PrecoP" max="32767" attributes="0"/>
-                          <Component id="Desco" pref="160" max="32767" attributes="0"/>
-                          <Component id="PrecoC" pref="160" max="32767" attributes="0"/>
-                      </Group>
-                  </Group>
+              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="2" attributes="0">
+                  <Component id="quant" alignment="2" pref="148" max="32767" attributes="0"/>
+                  <Component id="desc" alignment="2" pref="148" max="32767" attributes="0"/>
+                  <Component id="pp" alignment="2" max="32767" attributes="0"/>
+                  <Component id="pc" alignment="2" pref="148" max="32767" attributes="0"/>
+                  <Component id="data" alignment="2" pref="0" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="130" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="132" max="-2" attributes="0"/>
           </Group>
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="198" max="32767" attributes="0"/>
-              <Component id="jScrollPane2" min="-2" pref="739" max="-2" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
+              <Component id="jScrollPane2" min="-2" pref="558" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <Component id="jPanel1" max="32767" attributes="0"/>
-                      <EmptySpace min="39" pref="39" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="2" pref="2" max="-2" attributes="0"/>
-                                      <Component id="jLabel1" min="-2" pref="21" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="nome" alignment="0" min="-2" pref="25" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="2" pref="2" max="-2" attributes="0"/>
-                                      <Component id="jLabel2" min="-2" pref="21" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="fornecedor" alignment="0" min="-2" pref="25" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jLabel3" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
-                                  <Component id="cate" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jLabel4" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
-                                  <Component id="tama" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="data" alignment="0" min="-2" pref="25" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel7" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
+                                  <Component id="jLabel5" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
+                                  <Component id="cod" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Component id="data" min="-2" pref="25" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                  </Group>
                                   <Group type="102" alignment="1" attributes="0">
-                                      <Component id="jLabel7" min="-2" pref="21" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Component id="pc" min="-2" pref="25" max="-2" attributes="0"/>
+                                          <Component id="jLabel9" alignment="0" min="-2" pref="21" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabel8" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
-                                          <Component id="PrecoP" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                                          <Component id="pp" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="jLabel10" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
+                                          <Component id="desc" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jLabel11" min="-2" pref="22" max="-2" attributes="0"/>
+                                          <Component id="quant" alignment="0" min="-2" pref="25" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
                                   </Group>
-                              </Group>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jLabel9" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
-                                  <Component id="PrecoC" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jLabel10" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
-                                  <Component id="Desco" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="nome" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                                          <Component id="jLabel1" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="fornecedor" min="-2" pref="25" max="-2" attributes="0"/>
+                                          <Component id="jLabel2" alignment="1" min="-2" pref="21" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="jLabel3" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
+                                          <Component id="cate" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="tama" min="-2" pref="25" max="-2" attributes="0"/>
+                                          <Component id="jLabel4" alignment="0" min="-2" pref="21" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel11" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
-                          <Component id="Quant" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="163" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <Component id="jScrollPane2" pref="178" max="32767" attributes="0"/>
-              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -247,13 +235,13 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-                  <Component id="sal" pref="35" max="32767" attributes="0"/>
+                  <Component id="sal" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                  <Component id="edi" pref="35" max="32767" attributes="0"/>
+                  <Component id="edi" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-                  <Component id="exc" pref="36" max="32767" attributes="0"/>
+                  <Component id="exc" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-                  <Component id="lim" pref="37" max="32767" attributes="0"/>
+                  <Component id="lim" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -434,13 +422,13 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JTextField" name="PrecoP">
+    <Component class="javax.swing.JTextField" name="pp">
     </Component>
-    <Component class="javax.swing.JTextField" name="Desco">
+    <Component class="javax.swing.JTextField" name="desc">
     </Component>
-    <Component class="javax.swing.JTextField" name="Quant">
+    <Component class="javax.swing.JTextField" name="quant">
     </Component>
-    <Component class="javax.swing.JTextField" name="PrecoC">
+    <Component class="javax.swing.JTextField" name="pc">
     </Component>
     <Component class="javax.swing.JComboBox" name="cate">
       <Properties>
@@ -458,6 +446,16 @@
       </AuxValues>
     </Component>
     <Component class="javax.swing.JTextField" name="tama">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel5">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="14" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="C&#xf3;digo:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="cod">
     </Component>
   </SubComponents>
 </Form>
