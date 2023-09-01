@@ -105,13 +105,16 @@ public class estoque extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(22, 22, 22)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(245, Short.MAX_VALUE))
+                .addContainerGap(398, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(137, Short.MAX_VALUE))
         );
 
         pack();
@@ -119,57 +122,13 @@ public class estoque extends javax.swing.JInternalFrame {
 
     private void salActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salActionPerformed
 
-        Funcionario f = new Funcionario();
-        FuncionarioDAO dao = new FuncionarioDAO();
-
-        f.setNome_funcionario(nome.getText());
-        f.setCpf_funcionario(CPF.getText());
-        f.setRg_funcionario(RG.getText());
-        f.setEmail_funcionario(email.getText());
-        f.setEndereco_funcionario(end.getText());
-        f.setTelefone_funcionario(cel.getText());
-        f.setTelefone2_funcionario(tel.getText());
-        f.setData_nascimento_funcionario((java.sql.Date) (Date) data.getDate());
-        f.setIdade_funcionario(Integer.parseInt(ida.getText()));
-        f.setSexo_funcionario(sexo.getSelectedItem().toString());
-        f.setTurno(tur.getSelectedItem().toString());
-        f.setCargo(car.getSelectedItem().toString());
-        f.setSalario(Double.parseDouble(sala.getText()));
-        f.setSenha(sen.getText());
-        dao.salvar(f);
-
-        limpar();
-
-        readJTable();
+        
     }//GEN-LAST:event_salActionPerformed
 
     private void ediActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ediActionPerformed
 
         if (jTable1.getSelectedRow() != -1) {
 
-            Funcionario f = new Funcionario();
-            FuncionarioDAO dao = new FuncionarioDAO();
-
-            f.setNome_funcionario(nome.getText());
-            f.setCpf_funcionario(CPF.getText());
-            f.setRg_funcionario(RG.getText());
-            f.setEmail_funcionario(email.getText());
-            f.setEndereco_funcionario(end.getText());
-            f.setTelefone_funcionario(cel.getText());
-            f.setTelefone2_funcionario(tel.getText());
-            f.setData_nascimento_funcionario((java.sql.Date) (java.util.Date) data.getDate());
-            f.setIdade_funcionario(Integer.parseInt(ida.getText()));
-            f.setSexo_funcionario(sexo.getSelectedItem().toString());
-            f.setTurno(tur.getSelectedItem().toString());
-            f.setCargo(car.getSelectedItem().toString());
-            f.setSalario(Double.parseDouble(sala.getText()));
-            f.setSenha(sen.getText());
-            f.setId_funcionario((int)jTable1.getValueAt(jTable1.getSelectedRow(),0));
-            dao.atualizar(f);
-
-            limpar();
-
-            readJTable();
         }
     }//GEN-LAST:event_ediActionPerformed
 
@@ -177,21 +136,11 @@ public class estoque extends javax.swing.JInternalFrame {
 
         if (jTable1.getSelectedRow() != -1) {
 
-            Funcionario f = new Funcionario();
-            FuncionarioDAO dao = new FuncionarioDAO();
-
-            f.setId_funcionario((int)jTable1.getValueAt(jTable1.getSelectedRow(),0));
-            dao.excluir(f);
-
-            limpar();
-
-            readJTable();
         }
 
     }//GEN-LAST:event_excActionPerformed
 
     private void limActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limActionPerformed
-        limpar();
     }//GEN-LAST:event_limActionPerformed
 
 
