@@ -5,6 +5,7 @@
 package modelo;
 
 
+import com.mysql.jdbc.Blob;
 import java.sql.Date;
 import com.toedter.calendar.JDateChooser;
 
@@ -30,7 +31,7 @@ public class Funcionario {
     private String turno;
     private String cargo;
     private double salario;
-    private String foto_funcionario;
+    private Blob foto_funcionario;
     private String senha;
 
 
@@ -150,11 +151,11 @@ public class Funcionario {
         this.salario = salario;
     }
 
-    public String getFoto_funcionario() {
+    public Blob getFoto_funcionario() {
         return foto_funcionario;
     }
 
-    public void setFoto_funcionario(String foto_funcionario) {
+    public void setFoto_funcionario(Blob foto_funcionario) {
         this.foto_funcionario = foto_funcionario;
     }
 

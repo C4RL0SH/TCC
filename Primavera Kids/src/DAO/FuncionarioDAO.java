@@ -3,6 +3,7 @@ package DAO;
 
 
 import connection.ConnectionFactory;
+import java.io.FileInputStream;
 import java.sql.PreparedStatement;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -20,13 +21,17 @@ import modelo.Funcionario;
  * @author Carlos
  */
 public class FuncionarioDAO {
+     private FileInputStream fis;
+    
+    private int tamanho;
+    
     public void salvar(Funcionario f){
         
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
 
         try {
-            stmt = con.prepareStatement("INSERT INTO funcionario(nome_funcionario,email_funcionario,cpf_funcionario,rg_funcionario,data_nascimento_funcionario,idade_funcionario,telefone_funcionario,telefone2_funcionario,endereco_funcionario,sexo_funcionario,cargo,turno,salario,senha,foto_funcionario)VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+            stmt = con.prepareStatement("INSERT INTO funcionario(nome_funcionario,email_funcionario,cpf_funcionario,rg_funcionario,data_nascimento_funcionario,idade_funcionario,telefone_funcionario,telefone2_funcionario,endereco_funcionario,sexo_funcionario,cargo,turno,salario,senha,foto_funcionario)VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
             stmt.setString(1, f.getNome_funcionario());
             stmt.setString(2, f.getEmail_funcionario());
             stmt.setString(3, f.getCpf_funcionario());
@@ -41,7 +46,7 @@ public class FuncionarioDAO {
             stmt.setString(12, f.getTurno());            
             stmt.setDouble(13, f.getSalario());
             stmt.setString(14, f.getSenha());
-            stmt.setString(15, f.getFoto_funcionario());
+            stmt.setBlob(15, fis, tamanho);
             
             
       stmt.executeUpdate();
@@ -75,7 +80,7 @@ public class FuncionarioDAO {
             stmt.setString(12, f.getTurno());            
             stmt.setDouble(13, f.getSalario());
             stmt.setString(14, f.getSenha());
-            stmt.setString(15, f.getFoto_funcionario());
+            stmt.setBlob(15, f.getFoto_funcionario());
             stmt.setInt(16, f.getId_funcionario());
             
         stmt.executeUpdate();
@@ -136,7 +141,7 @@ public class FuncionarioDAO {
                 f.setTurno(rs.getString("turno"));                
                 f.setSalario(rs.getDouble("salario"));
                 f.setSenha(rs.getString("senha"));
-                f.setFoto_funcionario(rs.getString("foto_funcionario"));
+                f.setFoto_funcionario((com.mysql.jdbc.Blob) rs.getBlob("foto_funcionario"));
                 
                 funcionarios.add(f);
             }
@@ -206,7 +211,7 @@ public class FuncionarioDAO {
                 f.setTurno(rs.getString("turno"));                
                 f.setSalario(rs.getDouble("salario"));
                 f.setSenha(rs.getString("senha"));
-                f.setFoto_funcionario(rs.getString("foto_funcionario"));
+                f.setFoto_funcionario((com.mysql.jdbc.Blob) rs.getBlob("foto_funcionario"));
                 
             }    
             } catch (SQLException ex) {

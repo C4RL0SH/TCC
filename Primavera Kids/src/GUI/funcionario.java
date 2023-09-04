@@ -1,96 +1,104 @@
-package GUI; 
+package GUI;
 
 import DAO.FuncionarioDAO;
+import com.mysql.jdbc.Blob;
+import java.awt.Image;
+import java.io.FileInputStream;
 import java.util.Date;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import modelo.Funcionario;
-
-
 
 public class funcionario extends javax.swing.JInternalFrame {
 
     public funcionario() {
         initComponents();
-    
+        
+
         DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
         jTable1.setRowSorter(new TableRowSorter(modelo));
-
         readJTable();
-    }
-    public void limpar(){
-    
-    CPF.setText("");
-    RG.setText("");
-    cel.setText("");
-    data.setDate(null);
-    email.setText("");
-    end.setText("");
-    ida.setText("");
-    nome.setText("");
-    sala.setText("");
-    sen.setText("");
-    tel.setText("");
-
-    car.setSelectedItem(null);
-    sexo.setSelectedItem(null);
-    tur.setSelectedItem(null);
-    
-    }
-    
-    public void readJTable(){
         
+        
+    }
+    
+    private FileInputStream fis;
+    
+    private int tamanho;
+
+    public void limpar() {
+
+        CPF.setText("");
+        RG.setText("");
+        cel.setText("");
+        data.setDate(null);
+        email.setText("");
+        end.setText("");
+        ida.setText("");
+        nome.setText("");
+        sala.setText("");
+        sen.setText("");
+        tel.setText("");
+
+        car.setSelectedItem(null);
+        sexo.setSelectedItem(null);
+        tur.setSelectedItem(null);
+
+    }
+
+    public void readJTable() {
+
         DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
         modelo.setNumRows(0);
         FuncionarioDAO fdao = new FuncionarioDAO();
-        
-        for(Funcionario f: fdao.read()){
-            
+
+        for (Funcionario f : fdao.read()) {
+
             modelo.addRow(new Object[]{
-            
-            f.getId_funcionario(),
-            f.getNome_funcionario(),
-            f.getEmail_funcionario(),
-            f.getCpf_funcionario(),
-            f.getRg_funcionario(),
-            f.getData_nascimento_funcionario(),
-            f.getIdade_funcionario(),            
-            f.getTelefone_funcionario(),
-            f.getTelefone2_funcionario(),
-            f.getEndereco_funcionario(),            
-            f.getSexo_funcionario(),
-            f.getCargo(),
-            f.getTurno(),            
-            f.getSalario(),
-            f.getSenha()
-            
-            
+                f.getId_funcionario(),
+                f.getNome_funcionario(),
+                f.getEmail_funcionario(),
+                f.getCpf_funcionario(),
+                f.getRg_funcionario(),
+                f.getData_nascimento_funcionario(),
+                f.getIdade_funcionario(),
+                f.getTelefone_funcionario(),
+                f.getTelefone2_funcionario(),
+                f.getEndereco_funcionario(),
+                f.getSexo_funcionario(),
+                f.getCargo(),
+                f.getTurno(),
+                f.getSalario(),
+                f.getSenha()
+
             });
-        
-        }}
-    
-    
-    public void tabela(){
-    
-         nome.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 1).toString());
-         email.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 2).toString());
-         CPF.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 3).toString());
-         RG.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 4).toString());
-         data.setDate((Date)jTable1.getValueAt(jTable1.getSelectedRow(), 5));
-         ida.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 6).toString());
-         cel.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 7).toString());
-         tel.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 8).toString());
-         end.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 9).toString());
-         sexo.setSelectedItem(jTable1.getValueAt(jTable1.getSelectedRow(),10).toString());    
-         car.setSelectedItem(jTable1.getValueAt(jTable1.getSelectedRow(),11).toString());  
-         tur.setSelectedItem(jTable1.getValueAt(jTable1.getSelectedRow(),12).toString());
-         sala.setText(jTable1.getValueAt(jTable1.getSelectedRow(),13).toString()); 
-         sen.setText( jTable1.getValueAt(jTable1.getSelectedRow(), 14).toString());
-    
-   }
-    
-    
-    
+
+        }
+    }
+
+    public void tabela() {
+
+        nome.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 1).toString());
+        email.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 2).toString());
+        CPF.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 3).toString());
+        RG.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 4).toString());
+        data.setDate((Date) jTable1.getValueAt(jTable1.getSelectedRow(), 5));
+        ida.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 6).toString());
+        cel.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 7).toString());
+        tel.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 8).toString());
+        end.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 9).toString());
+        sexo.setSelectedItem(jTable1.getValueAt(jTable1.getSelectedRow(), 10).toString());
+        car.setSelectedItem(jTable1.getValueAt(jTable1.getSelectedRow(), 11).toString());
+        tur.setSelectedItem(jTable1.getValueAt(jTable1.getSelectedRow(), 12).toString());
+        sala.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 13).toString());
+        sen.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 14).toString());
+
+    }
+
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -130,8 +138,8 @@ public class funcionario extends javax.swing.JInternalFrame {
         lim = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jLabel15 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        lblfoto = new javax.swing.JLabel();
+        selfoto = new javax.swing.JButton();
 
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         setClosable(true);
@@ -330,10 +338,15 @@ public class funcionario extends javax.swing.JInternalFrame {
             jTable1.getColumnModel().getColumn(14).setHeaderValue("Senha");
         }
 
-        jLabel15.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, java.awt.Color.darkGray, null, null));
+        lblfoto.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton1.setText("Escolher");
+        selfoto.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        selfoto.setText("Escolher");
+        selfoto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selfotoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -396,8 +409,8 @@ public class funcionario extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(80, 80, 80)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE))
+                            .addComponent(selfoto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblfoto, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(51, 51, 51))
         );
@@ -489,9 +502,9 @@ public class funcionario extends javax.swing.JInternalFrame {
                                     .addComponent(jLabel14)
                                     .addComponent(sen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(33, 33, 33)
-                        .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblfoto, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(selfoto, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(158, 158, 158))))
         );
 
@@ -499,99 +512,121 @@ public class funcionario extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void salActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salActionPerformed
-        
-       Funcionario f = new Funcionario();
-       FuncionarioDAO dao = new FuncionarioDAO();
-       
-       f.setNome_funcionario(nome.getText());
-       f.setCpf_funcionario(CPF.getText());
-       f.setRg_funcionario(RG.getText());
-       f.setEmail_funcionario(email.getText());
-       f.setEndereco_funcionario(end.getText());
-       f.setTelefone_funcionario(cel.getText());
-       f.setTelefone2_funcionario(tel.getText());
-       
-       //java.util.Date utilDate = data.getDate(); // Obtém a data do JDateChooser
-       //java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime()); // Converte para java.sql.Date
-       //f.setData_nascimento_funcionario(sqlDate); 
-       
-       f.setData_nascimento_funcionario(new java.sql.Date(data.getDate().getTime())); 
-       f.setIdade_funcionario(Integer.parseInt(ida.getText()));
-       f.setSexo_funcionario(sexo.getSelectedItem().toString());       
-       f.setCargo(car.getSelectedItem().toString());
-       f.setTurno(tur.getSelectedItem().toString());
-       f.setSalario(Double.parseDouble(sala.getText()));
-       f.setSenha(sen.getText());
-       dao.salvar(f);
-       
-       limpar();
-       
-       readJTable();
+
+        Funcionario f = new Funcionario();
+        FuncionarioDAO dao = new FuncionarioDAO();
+
+        f.setNome_funcionario(nome.getText());
+        f.setCpf_funcionario(CPF.getText());
+        f.setRg_funcionario(RG.getText());
+        f.setEmail_funcionario(email.getText());
+        f.setEndereco_funcionario(end.getText());
+        f.setTelefone_funcionario(cel.getText());
+        f.setTelefone2_funcionario(tel.getText());
+
+        //java.util.Date utilDate = data.getDate(); // Obtém a data do JDateChooser
+        //java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime()); // Converte para java.sql.Date
+        //f.setData_nascimento_funcionario(sqlDate); 
+        f.setData_nascimento_funcionario(new java.sql.Date(data.getDate().getTime()));
+        f.setIdade_funcionario(Integer.parseInt(ida.getText()));
+        f.setSexo_funcionario(sexo.getSelectedItem().toString());
+        f.setCargo(car.getSelectedItem().toString());
+        f.setTurno(tur.getSelectedItem().toString());
+        f.setSalario(Double.parseDouble(sala.getText()));
+        f.setSenha(sen.getText());
+        f.setFoto_funcionario((Blob) lblfoto.getIcon());
+        dao.salvar(f);
+
+        limpar();
+
+        readJTable();
     }//GEN-LAST:event_salActionPerformed
 
     private void ediActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ediActionPerformed
-        
-       if (jTable1.getSelectedRow() != -1) {  
-               
-       Funcionario f = new Funcionario();
-       FuncionarioDAO dao = new FuncionarioDAO();
-       
-       f.setNome_funcionario(nome.getText());
-       f.setCpf_funcionario(CPF.getText());
-       f.setRg_funcionario(RG.getText());
-       f.setEmail_funcionario(email.getText());
-       f.setEndereco_funcionario(end.getText());
-       f.setTelefone_funcionario(cel.getText());
-       f.setTelefone2_funcionario(tel.getText());
-       f.setData_nascimento_funcionario(new java.sql.Date(data.getDate().getTime()));
-       f.setIdade_funcionario(Integer.parseInt(ida.getText()));
-       f.setSexo_funcionario(sexo.getSelectedItem().toString());
-       f.setCargo(car.getSelectedItem().toString());
-       f.setTurno(tur.getSelectedItem().toString());
-       f.setSalario(Double.parseDouble(sala.getText()));
-       f.setSenha(sen.getText());
-       
-       f.setId_funcionario((int)jTable1.getValueAt(jTable1.getSelectedRow(),0));
-       dao.atualizar(f);
-       
-       limpar();
-       
-       readJTable();
-    }
+
+        if (jTable1.getSelectedRow() != -1) {
+
+            Funcionario f = new Funcionario();
+            FuncionarioDAO dao = new FuncionarioDAO();
+
+            f.setNome_funcionario(nome.getText());
+            f.setCpf_funcionario(CPF.getText());
+            f.setRg_funcionario(RG.getText());
+            f.setEmail_funcionario(email.getText());
+            f.setEndereco_funcionario(end.getText());
+            f.setTelefone_funcionario(cel.getText());
+            f.setTelefone2_funcionario(tel.getText());
+            f.setData_nascimento_funcionario(new java.sql.Date(data.getDate().getTime()));
+            f.setIdade_funcionario(Integer.parseInt(ida.getText()));
+            f.setSexo_funcionario(sexo.getSelectedItem().toString());
+            f.setCargo(car.getSelectedItem().toString());
+            f.setTurno(tur.getSelectedItem().toString());
+            f.setSalario(Double.parseDouble(sala.getText()));
+            f.setSenha(sen.getText());
+
+            f.setId_funcionario((int) jTable1.getValueAt(jTable1.getSelectedRow(), 0));
+            dao.atualizar(f);
+
+            limpar();
+
+            readJTable();
+        }
     }//GEN-LAST:event_ediActionPerformed
 
     private void excActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excActionPerformed
-        
-        if (jTable1.getSelectedRow() != -1) {  
-               
-       Funcionario f = new Funcionario();
-       FuncionarioDAO dao = new FuncionarioDAO();
-       
-       f.setId_funcionario((int)jTable1.getValueAt(jTable1.getSelectedRow(),0));
-       dao.excluir(f);
-       
-       limpar();
-       
-       readJTable();
-    }
-        
+
+        if (jTable1.getSelectedRow() != -1) {
+
+            Funcionario f = new Funcionario();
+            FuncionarioDAO dao = new FuncionarioDAO();
+
+            f.setId_funcionario((int) jTable1.getValueAt(jTable1.getSelectedRow(), 0));
+            dao.excluir(f);
+
+            limpar();
+
+            readJTable();
+        }
+
     }//GEN-LAST:event_excActionPerformed
 
     private void limActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limActionPerformed
-        limpar();                
+        limpar();
     }//GEN-LAST:event_limActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-       if (jTable1.getSelectedRow() != -1) {
-       tabela();   
-      }
+        if (jTable1.getSelectedRow() != -1) {
+            tabela();
+        }
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void jTable1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTable1KeyReleased
-      if (jTable1.getSelectedRow() != -1) {
-       tabela();
-      }
+        if (jTable1.getSelectedRow() != -1) {
+            tabela();
+        }
+        
+        
     }//GEN-LAST:event_jTable1KeyReleased
+
+    private void selfotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selfotoActionPerformed
+        JFileChooser jfc = new JFileChooser();
+        jfc.setDialogTitle("Selecionar arquivo");
+        jfc.setFileFilter(new FileNameExtensionFilter("Arquivo de imagens(*.PNG,*.JPG,*.JPEG)","png","jpg","jpeg"));
+        int resultado  = jfc.showOpenDialog(this);
+        if (resultado == JFileChooser.APPROVE_OPTION){
+            try{
+                
+                fis = new FileInputStream(jfc.getSelectedFile());
+                tamanho = (int) jfc.getSelectedFile().length();
+                Image foto = ImageIO.read(jfc.getSelectedFile()).getScaledInstance(lblfoto.getWidth(), lblfoto.getHeight(), Image.SCALE_SMOOTH);
+                lblfoto.setIcon(new ImageIcon(foto));
+                lblfoto.updateUI();
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+        }
+        
+    }//GEN-LAST:event_selfotoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -605,14 +640,12 @@ public class funcionario extends javax.swing.JInternalFrame {
     private javax.swing.JTextField end;
     private javax.swing.JButton exc;
     private javax.swing.JTextField ida;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -624,10 +657,12 @@ public class funcionario extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
+    private javax.swing.JLabel lblfoto;
     private javax.swing.JButton lim;
     private javax.swing.JTextField nome;
     private javax.swing.JButton sal;
     private javax.swing.JFormattedTextField sala;
+    private javax.swing.JButton selfoto;
     private javax.swing.JTextField sen;
     private javax.swing.JComboBox<String> sexo;
     private javax.swing.JFormattedTextField tel;
