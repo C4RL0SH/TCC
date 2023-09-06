@@ -31,7 +31,7 @@ public class Funcionario {
     private String turno;
     private String cargo;
     private double salario;
-    private Blob foto_funcionario;
+    private byte[] foto_funcionario;
     private String senha;
 
 
@@ -151,11 +151,11 @@ public class Funcionario {
         this.salario = salario;
     }
 
-    public Blob getFoto_funcionario() {
+    public byte[] getFoto_funcionario() {
         return foto_funcionario;
     }
 
-    public void setFoto_funcionario(Blob foto_funcionario) {
+    public void setFoto_funcionario(byte[] foto_funcionario) {
         this.foto_funcionario = foto_funcionario;
     }
 

@@ -3,6 +3,7 @@ package GUI;
 import DAO.FuncionarioDAO;
 import com.mysql.jdbc.Blob;
 import java.awt.Image;
+import java.io.File;
 import java.io.FileInputStream;
 import java.util.Date;
 import javax.imageio.ImageIO;
@@ -29,6 +30,8 @@ public class funcionario extends javax.swing.JInternalFrame {
     private FileInputStream fis;
     
     private int tamanho;
+    
+    
 
     public void limpar() {
 
@@ -98,6 +101,7 @@ public class funcionario extends javax.swing.JInternalFrame {
         sen.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 14).toString());
 
     }
+    
 
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -533,8 +537,10 @@ public class funcionario extends javax.swing.JInternalFrame {
         f.setCargo(car.getSelectedItem().toString());
         f.setTurno(tur.getSelectedItem().toString());
         f.setSalario(Double.parseDouble(sala.getText()));
-        f.setSenha(sen.getText());
-        f.setFoto_funcionario((Blob) lblfoto.getIcon());
+        f.setSenha(sen.getText()); 
+        
+        
+        f.setFoto_funcionario(fileData);
         dao.salvar(f);
 
         limpar();
@@ -609,11 +615,13 @@ public class funcionario extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTable1KeyReleased
 
     private void selfotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selfotoActionPerformed
+        
         JFileChooser jfc = new JFileChooser();
         jfc.setDialogTitle("Selecionar arquivo");
         jfc.setFileFilter(new FileNameExtensionFilter("Arquivo de imagens(*.PNG,*.JPG,*.JPEG)","png","jpg","jpeg"));
         int resultado  = jfc.showOpenDialog(this);
         if (resultado == JFileChooser.APPROVE_OPTION){
+            File selectedFile = jfc.getSelectedFile();
             try{
                 
                 fis = new FileInputStream(jfc.getSelectedFile());
@@ -621,6 +629,11 @@ public class funcionario extends javax.swing.JInternalFrame {
                 Image foto = ImageIO.read(jfc.getSelectedFile()).getScaledInstance(lblfoto.getWidth(), lblfoto.getHeight(), Image.SCALE_SMOOTH);
                 lblfoto.setIcon(new ImageIcon(foto));
                 lblfoto.updateUI();
+                
+                 byte[] fileData = new byte[(int) selectedFile.length()];
+                 try (FileInputStream fis = new FileInputStream(selectedFile)) {
+                    fis.read(fileData);
+                }
             } catch (Exception e) {
                 System.out.println(e);
             }

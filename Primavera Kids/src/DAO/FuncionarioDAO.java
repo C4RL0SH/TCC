@@ -14,6 +14,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import modelo.Funcionario;
+import GUI.*;
 
 
 /**
@@ -46,7 +47,7 @@ public class FuncionarioDAO {
             stmt.setString(12, f.getTurno());            
             stmt.setDouble(13, f.getSalario());
             stmt.setString(14, f.getSenha());
-            stmt.setBlob(15, fis, tamanho);
+            stmt.setBytes(15, f.getFoto_funcionario());
             
             
       stmt.executeUpdate();
@@ -80,7 +81,7 @@ public class FuncionarioDAO {
             stmt.setString(12, f.getTurno());            
             stmt.setDouble(13, f.getSalario());
             stmt.setString(14, f.getSenha());
-            stmt.setBlob(15, f.getFoto_funcionario());
+            stmt.setBytes(15, f.getFoto_funcionario());
             stmt.setInt(16, f.getId_funcionario());
             
         stmt.executeUpdate();
@@ -141,7 +142,7 @@ public class FuncionarioDAO {
                 f.setTurno(rs.getString("turno"));                
                 f.setSalario(rs.getDouble("salario"));
                 f.setSenha(rs.getString("senha"));
-                f.setFoto_funcionario((com.mysql.jdbc.Blob) rs.getBlob("foto_funcionario"));
+                f.setFoto_funcionario(rs.getBytes("foto_funcionario"));
                 
                 funcionarios.add(f);
             }
@@ -211,7 +212,7 @@ public class FuncionarioDAO {
                 f.setTurno(rs.getString("turno"));                
                 f.setSalario(rs.getDouble("salario"));
                 f.setSenha(rs.getString("senha"));
-                f.setFoto_funcionario((com.mysql.jdbc.Blob) rs.getBlob("foto_funcionario"));
+                f.setFoto_funcionario(rs.getBytes("foto_funcionario"));
                 
             }    
             } catch (SQLException ex) {
