@@ -31,7 +31,7 @@ public class funcionario extends javax.swing.JInternalFrame {
     
     private int tamanho;
     
-    
+    private byte[] fileData = null;
 
     public void limpar() {
 
@@ -538,8 +538,6 @@ public class funcionario extends javax.swing.JInternalFrame {
         f.setTurno(tur.getSelectedItem().toString());
         f.setSalario(Double.parseDouble(sala.getText()));
         f.setSenha(sen.getText()); 
-        
-        
         f.setFoto_funcionario(fileData);
         dao.salvar(f);
 
@@ -569,7 +567,7 @@ public class funcionario extends javax.swing.JInternalFrame {
             f.setTurno(tur.getSelectedItem().toString());
             f.setSalario(Double.parseDouble(sala.getText()));
             f.setSenha(sen.getText());
-
+            f.setFoto_funcionario(fileData);
             f.setId_funcionario((int) jTable1.getValueAt(jTable1.getSelectedRow(), 0));
             dao.atualizar(f);
 

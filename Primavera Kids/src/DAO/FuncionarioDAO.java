@@ -1,7 +1,6 @@
 
 package DAO;
 
-
 import connection.ConnectionFactory;
 import java.io.FileInputStream;
 import java.sql.PreparedStatement;
@@ -14,18 +13,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import modelo.Funcionario;
-import GUI.*;
-
 
 /**
  *
  * @author Carlos
  */
 public class FuncionarioDAO {
-     private FileInputStream fis;
-    
-    private int tamanho;
-    
+     
     public void salvar(Funcionario f){
         
         Connection con = ConnectionFactory.getConnection();

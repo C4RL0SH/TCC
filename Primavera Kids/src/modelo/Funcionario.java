@@ -4,13 +4,7 @@
  */
 package modelo;
 
-
-import com.mysql.jdbc.Blob;
 import java.sql.Date;
-import com.toedter.calendar.JDateChooser;
-
-
-
 
 /**
  *
@@ -33,10 +27,6 @@ public class Funcionario {
     private double salario;
     private byte[] foto_funcionario;
     private String senha;
-
-
-    
-
     
     
     public int getId_funcionario() {
@@ -166,8 +156,5 @@ public class Funcionario {
     public void setSenha(String senha) {
         this.senha = senha;
     }
-
-    
-    
-    
+   
 }

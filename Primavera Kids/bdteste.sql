@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 07-Ago-2023 às 14:03
--- Versão do servidor: 10.4.27-MariaDB
--- versão do PHP: 8.0.25
+-- Tempo de geração: 11/09/2023 às 03:54
+-- Versão do servidor: 10.4.28-MariaDB
+-- Versão do PHP: 8.0.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `cliente`
+-- Estrutura para tabela `cliente`
 --
 
 CREATE TABLE `cliente` (
@@ -41,7 +41,7 @@ CREATE TABLE `cliente` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Extraindo dados da tabela `cliente`
+-- Despejando dados para a tabela `cliente`
 --
 
 INSERT INTO `cliente` (`id_cliente`, `nome_cliente`, `cpf_cliente`, `rg_cliente`, `email_cliente`, `endereco_cliente`, `telefone_cliente`, `idade_cliente`, `data_nascimento_cliente`, `sexo_cliente`) VALUES
@@ -52,7 +52,7 @@ INSERT INTO `cliente` (`id_cliente`, `nome_cliente`, `cpf_cliente`, `rg_cliente`
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `estoque`
+-- Estrutura para tabela `estoque`
 --
 
 CREATE TABLE `estoque` (
@@ -68,7 +68,7 @@ CREATE TABLE `estoque` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `funcionario`
+-- Estrutura para tabela `funcionario`
 --
 
 CREATE TABLE `funcionario` (
@@ -87,22 +87,24 @@ CREATE TABLE `funcionario` (
   `turno` varchar(50) DEFAULT NULL,
   `salario` double DEFAULT NULL,
   `senha` varchar(100) DEFAULT NULL,
-  `foto_funcionario` longblob DEFAULT NULL
+  `foto_funcionario` blob DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Extraindo dados da tabela `funcionario`
+-- Despejando dados para a tabela `funcionario`
 --
 
 INSERT INTO `funcionario` (`id_funcionario`, `nome_funcionario`, `email_funcionario`, `cpf_funcionario`, `rg_funcionario`, `data_nascimento_funcionario`, `idade_funcionario`, `telefone_funcionario`, `telefone2_funcionario`, `endereco_funcionario`, `sexo_funcionario`, `cargo`, `turno`, `salario`, `senha`, `foto_funcionario`) VALUES
 (1, 'admin', 'admn@gmail.com', '111.111.111-11', '11.111.111-1', '2000-07-04', 23, '(22)22222-2222', '(11)11111-1111', 'rua', 'Feminino', 'Gerente', 'Tarde', 1200, '123', NULL),
-(2, 'william', 'admn@gmail.com', '111.111.111-11', '11.111.111-1', '1970-01-01', 21, '(22)22222-2222', '(11)11111-1111', 'rua 3', 'Feminino', 'Gerente', 'Tarde', 1200, NULL, NULL),
-(3, 'william', 'admn@gmail.com', '111.111.111-11', '11.111.111-1', '1970-01-01', 21, '(22)22222-2222', '(11)11111-1111', 'rua 3', 'Feminino', 'Gerente', 'Tarde', 1200, NULL, NULL);
+(2, 'william', 'admn@gmail.com', '111.111.111-11', '11.111.111-1', '1970-01-01', 21, '(22)22222-2222', '(11)11111-1111', 'rua 3', 'Feminino', 'Gerente', 'Tarde', 1200, '456', NULL),
+(3, 'william', 'admn@gmail.com', '111.111.111-11', '11.111.111-1', '1970-01-01', 21, '(22)22222-2222', '(11)11111-1111', 'rua 3', 'Feminino', 'Gerente', 'Tarde', 1200, '675', NULL),
+(4, 'admin', 'admn@gmail.com', '111.111.111-11', '11.111.111-1', '2000-07-04', 23, '(22)22222-2222', '(11)11111-1111', 'rua', 'Feminino', 'Gerente', 'Tarde', 1200, '123', NULL),
+(5, 'admin', 'admn@gmail.com', '111.111.111-11', '11.111.111-1', '2000-07-04', 23, '(22)22222-2222', '(11)11111-1111', 'rua', 'Feminino', 'Gerente', 'Tarde', 1200, '123', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `produto`
+-- Estrutura para tabela `produto`
 --
 
 CREATE TABLE `produto` (
@@ -125,31 +127,31 @@ CREATE TABLE `produto` (
 --
 
 --
--- Índices para tabela `cliente`
+-- Índices de tabela `cliente`
 --
 ALTER TABLE `cliente`
   ADD PRIMARY KEY (`id_cliente`);
 
 --
--- Índices para tabela `estoque`
+-- Índices de tabela `estoque`
 --
 ALTER TABLE `estoque`
   ADD PRIMARY KEY (`id_estoque`);
 
 --
--- Índices para tabela `funcionario`
+-- Índices de tabela `funcionario`
 --
 ALTER TABLE `funcionario`
   ADD PRIMARY KEY (`id_funcionario`);
 
 --
--- Índices para tabela `produto`
+-- Índices de tabela `produto`
 --
 ALTER TABLE `produto`
   ADD PRIMARY KEY (`id_produto`);
 
 --
--- AUTO_INCREMENT de tabelas despejadas
+-- AUTO_INCREMENT para tabelas despejadas
 --
 
 --
@@ -168,7 +170,7 @@ ALTER TABLE `estoque`
 -- AUTO_INCREMENT de tabela `funcionario`
 --
 ALTER TABLE `funcionario`
-  MODIFY `id_funcionario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_funcionario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de tabela `produto`
