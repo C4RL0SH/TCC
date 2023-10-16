@@ -168,25 +168,16 @@ public class Login extends javax.swing.JFrame {
                 Statement stmt = (Statement) con.createStatement()) {
 
             String query = "select * from funcionario where nome_funcionario = '"+nome+"' and senha = '"+senha+"'";
-
                 try (ResultSet rs = stmt.executeQuery(query)) {
                     if (rs.next()) {
-                        String cargo = rs.getString("cargo");
-                        
-                                   
+                        String cargo = rs.getString("cargo");                                   
                         if(cargo.equals("Gerente")){
                             JOptionPane.showMessageDialog(null,"Conectado com sucesso");
-                            Menu s = new Menu();
-                            
+                            Menu s = new Menu();                            
                             s.setVisible(true);
                             this.dispose();
-                        }
-                        
-                        
-                        
+                        }                    
                     }
-                    
-
                     else {
                         JOptionPane.showMessageDialog(null,"Usuário e/ou senha incorretos.");
                         usuario.setText("");

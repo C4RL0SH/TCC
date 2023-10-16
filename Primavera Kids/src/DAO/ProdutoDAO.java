@@ -28,17 +28,17 @@ public class ProdutoDAO {
     PreparedStatement stmt = null;
 
         try {
-            stmt = con.prepareStatement("INSERT INTO produto(codigo_produto,nome_produto,nome_fornecedor,data_registro,categoria,quantidade,tamanho,preco_produto,preco_compra,desconto,foto)VALUES(?,?,?,?,?,?,?,?,?,?,?)");
-            stmt.setInt(1, p.getCodigo_produto());
-            stmt.setString(2, p.getNome_produto());
-            stmt.setString(3, p.getNome_fornecedor());            
-            stmt.setDate(4, new java.sql.Date (p.getData_registro().getTime()));
-            stmt.setString(5, p.getCategoria());
-            stmt.setInt(6, p.getQuantidade());
-            stmt.setString(7, p.getTamanho());
-            stmt.setDouble(8, p.getPreco_produto());
-            stmt.setDouble(9, p.getPreco_compra());
-            stmt.setInt(10, p.getDesconto());
+            stmt = con.prepareStatement("INSERT INTO produto(nome_produto,nome_fornecedor,data_registro,categoria,quantidade,tamanho,preco_produto,preco_compra,desconto)VALUES(?,?,?,?,?,?,?,?,?)");
+            
+            stmt.setString(1, p.getNome_produto());
+            stmt.setString(2, p.getNome_fornecedor());                        
+            stmt.setDate(3, new java.sql.Date (p.getData_registro().getTime()));
+            stmt.setString(4, p.getCategoria());
+            stmt.setInt(5, p.getQuantidade());
+            stmt.setString(6, p.getTamanho());
+            stmt.setDouble(7, p.getPreco_produto());
+            stmt.setDouble(8, p.getPreco_compra());
+            stmt.setInt(9, p.getDesconto());
             
             
         stmt.executeUpdate();
@@ -57,18 +57,17 @@ public class ProdutoDAO {
     PreparedStatement stmt = null;
 
         try {
-            stmt = con.prepareStatement("UPDATE produto SET codigo_produto = ?,nome_produto = ?,nome_fornecedor = ?,data_registro = ?,categoria = ?,quantidade = ?,tamanho = ?,preco_produto = ?,preco_compra = ?,desconto = ? WHERE id_produto = ?");
-            stmt.setInt(1, p.getCodigo_produto());
-            stmt.setString(2, p.getNome_produto());
-            stmt.setString(3, p.getNome_fornecedor());
-            stmt.setDate(4, new java.sql.Date (p.getData_registro().getTime()));
-            stmt.setString(5, p.getCategoria());
-            stmt.setInt(6, p.getQuantidade());
-            stmt.setString(7, p.getTamanho());
-            stmt.setDouble(8, p.getPreco_produto());
-            stmt.setDouble(9, p.getPreco_compra());
-            stmt.setInt(10, p.getDesconto());
-            stmt.setInt(11, p.getId_produto());
+            stmt = con.prepareStatement("UPDATE produto SET nome_produto = ?,nome_fornecedor = ?,data_registro = ?,categoria = ?,quantidade = ?,tamanho = ?,preco_produto = ?,preco_compra = ?,desconto = ? WHERE codigo_produto = ?");
+            stmt.setString(1, p.getNome_produto());
+            stmt.setString(2, p.getNome_fornecedor());                        
+            stmt.setDate(3, new java.sql.Date (p.getData_registro().getTime()));
+            stmt.setString(4, p.getCategoria());
+            stmt.setInt(5, p.getQuantidade());
+            stmt.setString(6, p.getTamanho());
+            stmt.setDouble(7, p.getPreco_produto());
+            stmt.setDouble(8, p.getPreco_compra());
+            stmt.setInt(9, p.getDesconto());
+            stmt.setInt(10, p.getCodigo_produto());
             stmt.executeUpdate();
             
             JOptionPane.showMessageDialog(null,"Atualizado com sucesso!");
@@ -85,8 +84,8 @@ public class ProdutoDAO {
     PreparedStatement stmt = null;
 
         try {
-            stmt = con.prepareStatement("DELETE FROM produto WHERE id_produto = ?");
-            stmt.setInt(1, p.getId_produto());
+            stmt = con.prepareStatement("DELETE FROM produto WHERE codigo_produto = ?");
+            stmt.setInt(1, p.getCodigo_produto());
             stmt.executeUpdate();
             
             JOptionPane.showMessageDialog(null,"Deletado com sucesso!");
@@ -112,7 +111,7 @@ public class ProdutoDAO {
             while (rs.next()){
             
                 Produto p = new Produto();
-                p.setId_produto(rs.getInt("id_produto"));
+                
                 p.setCodigo_produto(rs.getInt("codigo_produto"));
                 p.setNome_produto(rs.getString("nome_produto"));
                 p.setNome_fornecedor(rs.getString("nome_fornecedor"));                

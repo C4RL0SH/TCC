@@ -4,6 +4,7 @@
  */
 package modelo;
 
+
 import java.util.Date;
 
 /**
@@ -11,10 +12,9 @@ import java.util.Date;
  * @author Carlos
  */
 public class Produto {
-    private int id_produto;
-    private String nome_produto;
-    private String nome_fornecedor;
     private int codigo_produto;
+    private String nome_produto;
+    private String nome_fornecedor;    
     private Date data_registro;
     private String categoria;
     private int quantidade;
@@ -23,12 +23,12 @@ public class Produto {
     private double preco_compra;
     private int desconto;
 
-    public int getId_produto() {
-        return id_produto;
+    public int getCodigo_produto() {
+        return codigo_produto;
     }
 
-    public void setId_produto(int id_produto) {
-        this.id_produto = id_produto;
+    public void setCodigo_produto(int codigo_produto) {
+        this.codigo_produto = codigo_produto;
     }
 
     public String getNome_produto() {
@@ -46,15 +46,7 @@ public class Produto {
     public void setNome_fornecedor(String nome_fornecedor) {
         this.nome_fornecedor = nome_fornecedor;
     }
-
-    public int getCodigo_produto() {
-        return codigo_produto;
-    }
-
-    public void setCodigo_produto(int codigo_produto) {
-        this.codigo_produto = codigo_produto;
-    }
-
+    
     public Date getData_registro() {
         return data_registro;
     }

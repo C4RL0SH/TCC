@@ -51,7 +51,8 @@ public class Menu extends javax.swing.JFrame {
         Venda = new javax.swing.JMenu();
         Descon = new javax.swing.JMenu();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Menu");
 
         javax.swing.GroupLayout MenuLayout = new javax.swing.GroupLayout(Menu);
         Menu.setLayout(MenuLayout);
@@ -171,7 +172,15 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_cliMouseClicked
 
     private void EstoqueMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EstoqueMouseClicked
-        // TODO add your handling code here:
+       estoque e = new estoque();
+        Menu.add(e);
+        e.setVisible(true);
+        e.show();
+        try {
+            e.setMaximum(true);
+        } catch (PropertyVetoException ex) {
+            
+        }
     }//GEN-LAST:event_EstoqueMouseClicked
 
     private void ProdutoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ProdutoMouseClicked
