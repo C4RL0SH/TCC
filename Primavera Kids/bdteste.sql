@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 16/10/2023 às 03:03
+-- Tempo de geração: 18/10/2023 às 04:13
 -- Versão do servidor: 10.4.28-MariaDB
 -- Versão do PHP: 8.2.4
 
@@ -95,8 +95,8 @@ CREATE TABLE `funcionario` (
 
 INSERT INTO `funcionario` (`id_funcionario`, `nome_funcionario`, `email_funcionario`, `cpf_funcionario`, `rg_funcionario`, `data_nascimento_funcionario`, `idade_funcionario`, `telefone_funcionario`, `telefone2_funcionario`, `endereco_funcionario`, `sexo_funcionario`, `cargo`, `turno`, `salario`, `senha`, `foto_funcionario`) VALUES
 (1, 'admin', 'admn@gmail.com', '111.111.111-11', '11.111.111-1', '2000-07-04', 23, '(22)22222-2222', '(11)11111-1111', 'rua', 'Feminino', 'Gerente', 'Tarde', 1200, '123', NULL),
-(2, 'william', 'admn@gmail.com', '111.111.111-11', '11.111.111-1', '1970-01-01', 21, '(22)22222-2222', '(11)11111-1111', 'rua 3', 'Feminino', 'Gerente', 'Tarde', 1200, '456', NULL),
-(3, 'william', 'admn@gmail.com', '111.111.111-11', '11.111.111-1', '1970-01-01', 21, '(22)22222-2222', '(11)11111-1111', 'rua 3', 'Feminino', 'Gerente', 'Tarde', 1200, '675', NULL),
+(2, 'william', 'admn@gmail.com', '111.111.111-11', '11.111.111-1', '1970-01-01', 21, '(22)22222-2222', '(11)11111-1111', 'rua 3', 'Masculino', 'Estoquista', 'Tarde', 1200, '456', NULL),
+(3, 'alessandra', 'admn@gmail.com', '111.111.111-11', '11.111.111-1', '1970-01-01', 21, '(22)22222-2222', '(11)11111-1111', 'rua 3', 'Feminino', 'Caixa', 'Tarde', 1200, '675', NULL),
 (4, 'admin', 'admn@gmail.com', '111.111.111-11', '11.111.111-1', '2000-07-04', 23, '(22)22222-2222', '(11)11111-1111', 'rua', 'Feminino', 'Gerente', 'Tarde', 1200, '123', NULL),
 (5, 'admin', 'admn@gmail.com', '111.111.111-11', '11.111.111-1', '2000-07-04', 23, '(22)22222-2222', '(11)11111-1111', 'rua', 'Feminino', 'Gerente', 'Tarde', 1200, '123', NULL),
 (6, 'admin', 'admn@gmail.com', '111.111.111-11', '11.111.111-1', '2000-07-04', 23, '(22)22222-2222', '(11)11111-1111', 'rua', 'Feminino', 'Gerente', 'Tarde', 1200, '123', NULL);
@@ -125,8 +125,8 @@ CREATE TABLE `produto` (
 --
 
 INSERT INTO `produto` (`codigo_produto`, `nome_produto`, `nome_fornecedor`, `data_registro`, `categoria`, `quantidade`, `tamanho`, `preco_produto`, `preco_compra`, `desconto`) VALUES
-(1, 'Camisa ', 'Nike', '2023-10-14', 'Item 2', 52, 'G', 25.99, 20.99, 0),
-(3, 'Short', 'Nike', '2023-10-14', 'Item 3', 40, 'G', 25.99, 20.99, 0),
+(1, 'Camisa ', 'Nike', '2023-10-14', 'Camisetas', 52, 'G', 25.99, 20.99, 0),
+(3, 'Short', 'Nike', '2023-10-14', 'Shorts', 40, 'G', 25.99, 20.99, 0),
 (4, 'Camisa ', 'Adidas', '2023-10-14', 'Item 2', 52, 'G', 25.99, 20.99, 0),
 (5, 'Short', 'Adidas', '2023-10-14', 'Item 2', 52, 'G', 25.99, 20.99, 0),
 (6, 'Camisa ', 'Puma', '2023-10-14', 'Item 2', 52, 'G', 25.99, 20.99, 0),

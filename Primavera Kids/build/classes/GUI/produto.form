@@ -2,6 +2,9 @@
 
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JInternalFrameFormInfo">
   <Properties>
+    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+      <Color blue="be" green="f2" red="ff" type="rgb"/>
+    </Property>
     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
       <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
         <LineBorder/>
@@ -67,10 +70,10 @@
               <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="tama" alignment="0" pref="268" max="32767" attributes="0"/>
-                  <Component id="cate" alignment="0" pref="268" max="32767" attributes="0"/>
-                  <Component id="fornecedor" alignment="0" pref="268" max="32767" attributes="0"/>
-                  <Component id="nome" alignment="0" pref="268" max="32767" attributes="0"/>
+                  <Component id="tama" alignment="0" pref="269" max="32767" attributes="0"/>
+                  <Component id="cate" alignment="0" pref="269" max="32767" attributes="0"/>
+                  <Component id="fornecedor" alignment="0" pref="269" max="32767" attributes="0"/>
+                  <Component id="nome" alignment="0" pref="269" max="32767" attributes="0"/>
                   <Component id="jLabel5" alignment="0" min="-2" pref="70" max="-2" attributes="0"/>
                   <Component id="jLabel1" alignment="0" min="-2" pref="70" max="-2" attributes="0"/>
                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
@@ -84,7 +87,7 @@
                   <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel11" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="data" pref="258" max="32767" attributes="0"/>
+                  <Component id="data" pref="259" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="quant" alignment="0" max="32767" attributes="0"/>
@@ -162,7 +165,7 @@
                   <Component id="pesquisa" max="32767" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jScrollPane2" pref="158" max="32767" attributes="0"/>
+              <Component id="jScrollPane2" pref="184" max="32767" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="sal" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>

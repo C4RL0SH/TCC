@@ -1,13 +1,20 @@
 
 package GUI;
 
+import GUI.Login;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.beans.PropertyVetoException;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
-
+import java.text.SimpleDateFormat;
+import java.util.TimerTask;
+import javax.swing.JOptionPane;
+import javax.swing.Timer;
 /**
  *
  * @author Carlos
@@ -22,7 +29,7 @@ public class Menu extends javax.swing.JFrame {
         initComponents();
         this.setExtendedState(MAXIMIZED_BOTH);
         
-        
+       
     }
 
     /**
@@ -43,6 +50,10 @@ public class Menu extends javax.swing.JFrame {
             }
 
         };
+        jPanel1 = new javax.swing.JPanel();
+        lblusuario = new javax.swing.JLabel();
+        lbldata = new javax.swing.JLabel();
+        lblhora = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         cli = new javax.swing.JMenu();
         Estoque = new javax.swing.JMenu();
@@ -53,16 +64,54 @@ public class Menu extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Menu");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
 
         javax.swing.GroupLayout MenuLayout = new javax.swing.GroupLayout(Menu);
         Menu.setLayout(MenuLayout);
         MenuLayout.setHorizontalGroup(
             MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1280, Short.MAX_VALUE)
+            .addGap(0, 1160, Short.MAX_VALUE)
         );
         MenuLayout.setVerticalGroup(
             MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 690, Short.MAX_VALUE)
+        );
+
+        lblusuario.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblusuario.setText("Usuario");
+
+        lbldata.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lbldata.setText("Data");
+
+        lblhora.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblhora.setText("Hora");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblhora)
+                    .addComponent(lbldata)
+                    .addComponent(lblusuario))
+                .addContainerGap(66, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(86, 86, 86)
+                .addComponent(lblusuario)
+                .addGap(108, 108, 108)
+                .addComponent(lbldata)
+                .addGap(29, 29, 29)
+                .addComponent(lblhora)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jMenuBar1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -133,20 +182,27 @@ public class Menu extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Menu)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(Menu)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(Menu)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void DesconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DesconMouseClicked
+        int sair = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja desconectar?","Atenção",JOptionPane.YES_NO_OPTION);
+        if(sair == JOptionPane.YES_OPTION){
         dispose();
         Login t = new Login();
-        t.setVisible(true);
+        t.setVisible(true);}
+        
     }//GEN-LAST:event_DesconMouseClicked
 
     private void FuncionarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FuncionarioMouseClicked
@@ -199,6 +255,16 @@ public class Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_VendaMouseClicked
 
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+       
+        Date dataHoraAtual = new Date(); 
+       String data = new SimpleDateFormat("dd/MM/yyyy").format(dataHoraAtual);
+       lbldata.setText(data);
+       Timer time = new Timer( 1000, new horaatual());
+       time.start();
+       
+    }//GEN-LAST:event_formWindowActivated
+
     /**
      * @param args the command line arguments
      */
@@ -238,12 +304,30 @@ public class Menu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu Descon;
-    private javax.swing.JMenu Estoque;
-    private javax.swing.JMenu Funcionario;
+    public static javax.swing.JMenu Estoque;
+    public static javax.swing.JMenu Funcionario;
     private javax.swing.JDesktopPane Menu;
-    private javax.swing.JMenu Produto;
-    private javax.swing.JMenu Venda;
-    private javax.swing.JMenu cli;
+    public static javax.swing.JMenu Produto;
+    public static javax.swing.JMenu Venda;
+    public static javax.swing.JMenu cli;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lbldata;
+    private javax.swing.JLabel lblhora;
+    public static javax.swing.JLabel lblusuario;
     // End of variables declaration//GEN-END:variables
+
+    class horaatual implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            Date dataHoraAtual = new Date(); 
+            String hora = new SimpleDateFormat("HH:mm:ss").format(dataHoraAtual);
+            lblhora.setText(hora);
+        }
+    
+    
 }
+    
+}
+

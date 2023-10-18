@@ -175,8 +175,32 @@ public class Login extends javax.swing.JFrame {
                             JOptionPane.showMessageDialog(null,"Conectado com sucesso");
                             Menu s = new Menu();                            
                             s.setVisible(true);
+                            Menu.lblusuario.setText(rs.getString(2));
                             this.dispose();
-                        }                    
+                        }
+                        else if(cargo.equals("Caixa")){
+                        JOptionPane.showMessageDialog(null,"Conectado com sucesso");
+                            Menu s = new Menu();                            
+                            s.setVisible(true);
+                            Menu.Estoque.setVisible(false);
+                            Menu.Funcionario.setVisible(false);
+                            Menu.Produto.setVisible(false);
+                            Menu.lblusuario.setText(rs.getString(2));
+                            this.dispose();
+                        
+                        }
+                        else if(cargo.equals("Estoquista")){
+                        JOptionPane.showMessageDialog(null,"Conectado com sucesso");
+                            Menu s = new Menu();                            
+                            s.setVisible(true);
+                            Menu.cli.setVisible(false);
+                            Menu.Produto.setVisible(false);
+                            Menu.Funcionario.setVisible(false);
+                            Menu.Venda.setVisible(false);
+                            Menu.lblusuario.setText(rs.getString(2));
+                            this.dispose();
+                        
+                        }
                     }
                     else {
                         JOptionPane.showMessageDialog(null,"Usuário e/ou senha incorretos.");
