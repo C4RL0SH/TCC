@@ -8,6 +8,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import modelo.Cliente;
 import DAO.ClienteDAO;
+import java.awt.Color;
 import java.util.Date;
 import javax.swing.RowFilter;
 import javax.swing.table.TableModel;
@@ -23,6 +24,8 @@ public class cliente extends javax.swing.JInternalFrame {
      */
     public cliente() {
         initComponents();
+        Color minhaCor = new Color(255,242,190);
+        getContentPane().setBackground(minhaCor);
         DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
         jTable1.setRowSorter(new TableRowSorter(modelo));
 
@@ -277,6 +280,11 @@ public class cliente extends javax.swing.JInternalFrame {
                 pesqActionPerformed(evt);
             }
         });
+        pesq.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                pesqKeyReleased(evt);
+            }
+        });
 
         pesquisa.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         pesquisa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/zoom.png"))); // NOI18N
@@ -422,7 +430,7 @@ public class cliente extends javax.swing.JInternalFrame {
         c.setEmail_cliente(email.getText());
         c.setEndereco_cliente(end.getText());
         c.setTelefone_cliente(cel.getText());
-        c.setData_nascimento_cliente((java.sql.Date) (Date) data.getDate());
+        c.setData_nascimento_cliente(new java.sql.Date(data.getDate().getTime()));
         c.setIdade_cliente(Integer.parseInt(ida.getText()));
         c.setSexo_cliente(sexo.getSelectedItem().toString());
         dao.salvar(c);
@@ -445,7 +453,7 @@ public class cliente extends javax.swing.JInternalFrame {
             c.setEmail_cliente(email.getText());
             c.setEndereco_cliente(end.getText());
             c.setTelefone_cliente(cel.getText());            
-            c.setData_nascimento_cliente((java.sql.Date) (java.util.Date) data.getDate());
+            c.setData_nascimento_cliente(new java.sql.Date(data.getDate().getTime()));
             c.setIdade_cliente(Integer.parseInt(ida.getText()));
             c.setSexo_cliente(sexo.getSelectedItem().toString());                        
             c.setId_cliente((int)jTable1.getValueAt(jTable1.getSelectedRow(),0));
@@ -496,12 +504,18 @@ public class cliente extends javax.swing.JInternalFrame {
 
     private void pesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesquisaActionPerformed
         DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
-        final TableRowSorter<TableModel> classificador = new TableRowSorter<>(modelo);
-        jTable1.setRowSorter(classificador);
-        String Texto = pesq.getText();
-        classificador.setRowFilter(RowFilter.regexFilter(Texto, 1));
+        TableRowSorter<DefaultTableModel> mode1 = new TableRowSorter<>(modelo);
+        jTable1.setRowSorter(mode1);
+        mode1.setRowFilter(RowFilter.regexFilter(pesq.getText()));
 
     }//GEN-LAST:event_pesquisaActionPerformed
+
+    private void pesqKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pesqKeyReleased
+DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
+        TableRowSorter<DefaultTableModel> mode1 = new TableRowSorter<>(modelo);
+        jTable1.setRowSorter(mode1);
+        mode1.setRowFilter(RowFilter.regexFilter(pesq.getText()));       
+    }//GEN-LAST:event_pesqKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

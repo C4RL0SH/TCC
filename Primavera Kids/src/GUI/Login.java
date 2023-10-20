@@ -154,7 +154,7 @@ public class Login extends javax.swing.JFrame {
 
     
     private void sairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sairMouseClicked
-      dispose();
+      System.exit(0);
     }//GEN-LAST:event_sairMouseClicked
 
     private void entrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entrarActionPerformed

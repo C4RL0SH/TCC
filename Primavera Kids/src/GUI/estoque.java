@@ -5,6 +5,7 @@
 package GUI;
 
 import DAO.ProdutoDAO;
+import java.awt.Color;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
@@ -22,6 +23,8 @@ public class estoque extends javax.swing.JInternalFrame {
      */
     public estoque() {
         initComponents();
+        Color minhaCor = new Color(255,242,190);
+        getContentPane().setBackground(minhaCor);
         DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
         jTable1.setRowSorter(new TableRowSorter(modelo));
         readJTable();
@@ -81,6 +84,11 @@ public class estoque extends javax.swing.JInternalFrame {
         pesq.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 pesqActionPerformed(evt);
+            }
+        });
+        pesq.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                pesqKeyReleased(evt);
             }
         });
 
@@ -175,10 +183,9 @@ public class estoque extends javax.swing.JInternalFrame {
 
     private void pesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesquisaActionPerformed
         DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
-        final TableRowSorter<TableModel> classificador = new TableRowSorter<>(modelo);
-        jTable1.setRowSorter(classificador);
-        String Texto = pesq.getText();
-        classificador.setRowFilter(RowFilter.regexFilter(Texto, 1));
+        TableRowSorter<DefaultTableModel> mode1 = new TableRowSorter<>(modelo);
+        jTable1.setRowSorter(mode1);
+        mode1.setRowFilter(RowFilter.regexFilter(pesq.getText()));
 
     }//GEN-LAST:event_pesquisaActionPerformed
 
@@ -189,6 +196,13 @@ public class estoque extends javax.swing.JInternalFrame {
     private void jTable1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTable1KeyReleased
        
     }//GEN-LAST:event_jTable1KeyReleased
+
+    private void pesqKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pesqKeyReleased
+DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
+        TableRowSorter<DefaultTableModel> mode1 = new TableRowSorter<>(modelo);
+        jTable1.setRowSorter(mode1);
+        mode1.setRowFilter(RowFilter.regexFilter(pesq.getText()));
+    }//GEN-LAST:event_pesqKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

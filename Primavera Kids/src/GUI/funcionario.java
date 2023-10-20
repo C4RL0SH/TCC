@@ -1,15 +1,10 @@
 package GUI;
 
 import DAO.FuncionarioDAO;
-import java.awt.Image;
-import java.io.File;
+import java.awt.Color;
 import java.io.FileInputStream;
 import java.util.Date;
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
-import javax.swing.JFileChooser;
 import javax.swing.RowFilter;
-import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
@@ -19,7 +14,8 @@ public class funcionario extends javax.swing.JInternalFrame {
 
     public funcionario() {
         initComponents();
-        
+        Color minhaCor = new Color(255,242,190);
+        getContentPane().setBackground(minhaCor);
 
         DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
         jTable1.setRowSorter(new TableRowSorter(modelo));
@@ -28,12 +24,7 @@ public class funcionario extends javax.swing.JInternalFrame {
         
     }
     
-    private FileInputStream fis;
     
-    private int tamanho;
-    
-    private byte[] fileData = null;
-
     public void limpar() {
 
         CPF.setText("");
@@ -355,6 +346,12 @@ public class funcionario extends javax.swing.JInternalFrame {
         jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel15.setText("Pesquisa:");
 
+        pesq.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                pesqKeyReleased(evt);
+            }
+        });
+
         jButton1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/zoom.png"))); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -559,7 +556,7 @@ public class funcionario extends javax.swing.JInternalFrame {
         f.setTurno(tur.getSelectedItem().toString());
         f.setSalario(Double.parseDouble(sala.getText()));
         f.setSenha(sen.getText()); 
-        f.setFoto_funcionario(fileData);
+        
         dao.salvar(f);
 
         limpar();
@@ -588,7 +585,6 @@ public class funcionario extends javax.swing.JInternalFrame {
             f.setTurno(tur.getSelectedItem().toString());
             f.setSalario(Double.parseDouble(sala.getText()));
             f.setSenha(sen.getText());
-            f.setFoto_funcionario(fileData);
             f.setId_funcionario((int) jTable1.getValueAt(jTable1.getSelectedRow(), 0));
             dao.atualizar(f);
 
@@ -634,12 +630,20 @@ public class funcionario extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTable1KeyReleased
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-     DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
-      final TableRowSorter<TableModel> classificador = new TableRowSorter<>(modelo);
-      jTable1.setRowSorter(classificador);
-      String Texto = pesq.getText();
-      classificador.setRowFilter(RowFilter.regexFilter(Texto, 1));
+      DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
+        TableRowSorter<DefaultTableModel> mode1 = new TableRowSorter<>(modelo);
+        jTable1.setRowSorter(mode1);
+        mode1.setRowFilter(RowFilter.regexFilter(pesq.getText()));
+      
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void pesqKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pesqKeyReleased
+        DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
+        TableRowSorter<DefaultTableModel> mode1 = new TableRowSorter<>(modelo);
+        jTable1.setRowSorter(mode1);
+        mode1.setRowFilter(RowFilter.regexFilter(pesq.getText()));
+        
+    }//GEN-LAST:event_pesqKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
