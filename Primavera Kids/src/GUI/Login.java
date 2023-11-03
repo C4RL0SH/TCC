@@ -13,7 +13,6 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import modelo.*;
 import DAO.*;
         
 
@@ -167,7 +166,7 @@ public class Login extends javax.swing.JFrame {
                 DriverManager.getConnection("jdbc:mysql://localhost/bdteste","root", ""); 
                 Statement stmt = (Statement) con.createStatement()) {
 
-            String query = "select * from funcionario where nome_funcionario = '"+nome+"' and senha = '"+senha+"'";
+            String query = "select * from tbl_funcionario where user = '"+nome+"' and senha = '"+senha+"'";
                 try (ResultSet rs = stmt.executeQuery(query)) {
                     if (rs.next()) {
                         String cargo = rs.getString("cargo");                                   
