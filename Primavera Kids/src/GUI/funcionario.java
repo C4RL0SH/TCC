@@ -106,7 +106,7 @@ public class funcionario extends javax.swing.JInternalFrame {
         modelFuncionario.setFuncCep(this.CEP.getText());
         modelFuncionario.setFuncCargo(this.car.getSelectedItem().toString());
         modelFuncionario.setFuncTurno(this.tur.getSelectedItem().toString());
-        modelFuncionario.setFuncSalario(Double.parseDouble(this.sala.getText()));
+        modelFuncionario.setFuncSalario(Double.parseDouble(this.sala.getText().replace(',', '.')));
         modelFuncionario.setFuncUser(this.user.getText());
         modelFuncionario.setFuncSenha(this.sen.getText());
         modelFuncionario.setFuncSituacao("Ativo");
@@ -139,11 +139,11 @@ public class funcionario extends javax.swing.JInternalFrame {
         modelFuncionario.setFuncCep(this.CEP.getText());
         modelFuncionario.setFuncCargo(this.car.getSelectedItem().toString());
         modelFuncionario.setFuncTurno(this.tur.getSelectedItem().toString());
-        modelFuncionario.setFuncSalario(Double.parseDouble(this.sala.getText()));
+        modelFuncionario.setFuncSalario(Double.parseDouble(this.sala.getText().replace(',', '.')));
         modelFuncionario.setFuncUser(this.user.getText());
         modelFuncionario.setFuncSenha(this.sen.getText());
         modelFuncionario.setFuncSituacao("Ativo");
-        if (controllerFuncionario.salvarFuncionarioController(modelFuncionario) > 0) {
+        if (controllerFuncionario.atualizarFuncionarioController(modelFuncionario)) {
             JOptionPane.showMessageDialog(this, "Alterado com sucesso!", "Atenção", JOptionPane.WARNING_MESSAGE);
             this.carregarFuncionario();
             limpar();
@@ -196,11 +196,9 @@ public class funcionario extends javax.swing.JInternalFrame {
         cidade = new javax.swing.JTextField();
         CEP = new javax.swing.JFormattedTextField();
         user = new javax.swing.JTextField();
-        jLabel17 = new javax.swing.JLabel();
         estado = new javax.swing.JComboBox<>();
         novo = new javax.swing.JButton();
         cancelar = new javax.swing.JButton();
-        situa = new javax.swing.JComboBox<>();
 
         setBackground(new java.awt.Color(255, 242, 190));
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -325,6 +323,11 @@ public class funcionario extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(jTable1);
         if (jTable1.getColumnModel().getColumnCount() > 0) {
             jTable1.getColumnModel().getColumn(0).setPreferredWidth(70);
@@ -418,9 +421,6 @@ public class funcionario extends javax.swing.JInternalFrame {
         user.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         user.setPreferredSize(new java.awt.Dimension(200, 25));
 
-        jLabel17.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        jLabel17.setText("Situação:");
-
         estado.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         estado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Acre (AC)", "Alagoas (AL)", "Amapá (AP)", "Amazonas (AM)", "Bahia (BA)", "Ceará (CE)", "Distrito Federal (DF)", "Espírito Santo (ES)", "Goiás (GO)", "Maranhão (MA)", "Mato Grosso (MT)", "Mato Grosso do Sul (MS)", "Minas Gerais (MG)", "Pará (PA)", "Paraíba (PB)", "Paraná (PR)", "Pernambuco (PE)", "Piauí (PI)", "Rio de Janeiro (RJ)", "Rio Grande do Norte (RN)", "Rio Grande do Sul (RS)", "Rondônia (RO)", "Roraima (RR)", "Santa Catarina (SC)", "São Paulo (SP)", "Sergipe (SE)", "Tocantins (TO)" }));
         estado.setSelectedIndex(-1);
@@ -448,11 +448,6 @@ public class funcionario extends javax.swing.JInternalFrame {
                 cancelarActionPerformed(evt);
             }
         });
-
-        situa.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        situa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ativo", "Desativado" }));
-        situa.setSelectedIndex(-1);
-        situa.setPreferredSize(new java.awt.Dimension(200, 25));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -515,13 +510,10 @@ public class funcionario extends javax.swing.JInternalFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(situa, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(user, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(sen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addGap(40, 40, 40))))
             .addGroup(layout.createSequentialGroup()
@@ -593,12 +585,10 @@ public class funcionario extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel12)
-                            .addComponent(jLabel17))
+                            .addComponent(jLabel12))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(cidade, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tur, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(situa, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(tur, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(JLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -667,7 +657,7 @@ public class funcionario extends javax.swing.JInternalFrame {
             sala.setText(String.valueOf(modelFuncionario.getFuncSalario()));
             user.setText(modelFuncionario.getFuncUser());
             sen.setText(modelFuncionario.getFuncSenha());
-
+            campos(true);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Código inválido ou nenhum registro selecionado!", "Aviso", JOptionPane.ERROR_MESSAGE);
         }
@@ -695,12 +685,36 @@ public class funcionario extends javax.swing.JInternalFrame {
 
     private void novoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_novoActionPerformed
         campos(true);
+        salvarAlterar = "salvar";
     }//GEN-LAST:event_novoActionPerformed
 
     private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
         campos(false);
         limpar();
     }//GEN-LAST:event_cancelarActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        int linha = jTable1.getSelectedRow();    
+        int codigoProd = (int) jTable1.getValueAt(linha, 0);
+            modelFuncionario = controllerFuncionario.getFuncionarioController(codigoProd);
+
+            nome.setText(modelFuncionario.getFuncNome());
+            CPF.setText(modelFuncionario.getFuncCpf());
+            email.setText(modelFuncionario.getFuncEmail());
+            data.setDate(modelFuncionario.getFuncData());
+            cel.setText(modelFuncionario.getFuncTelefone());
+            tel.setText(modelFuncionario.getFuncTelefone2());
+            sexo.setSelectedItem(modelFuncionario.getFuncSexo());
+            end.setText(modelFuncionario.getFuncEndereco());
+            cidade.setText(modelFuncionario.getFuncCidade());
+            estado.setSelectedItem(modelFuncionario.getFuncEstado());
+            CEP.setText(modelFuncionario.getFuncCep());
+            car.setSelectedItem(modelFuncionario.getFuncCargo());
+            tur.setSelectedItem(modelFuncionario.getFuncTurno());
+            sala.setText(String.valueOf(modelFuncionario.getFuncSalario()));
+            user.setText(modelFuncionario.getFuncUser());
+            sen.setText(modelFuncionario.getFuncSenha());
+    }//GEN-LAST:event_jTable1MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -726,7 +740,6 @@ public class funcionario extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -744,7 +757,6 @@ public class funcionario extends javax.swing.JInternalFrame {
     private javax.swing.JFormattedTextField sala;
     private javax.swing.JTextField sen;
     private javax.swing.JComboBox<String> sexo;
-    private javax.swing.JComboBox<String> situa;
     private javax.swing.JFormattedTextField tel;
     private javax.swing.JComboBox<String> tur;
     private javax.swing.JTextField user;

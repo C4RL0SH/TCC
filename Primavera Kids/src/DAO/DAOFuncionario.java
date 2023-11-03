@@ -18,8 +18,7 @@ public class DAOFuncionario extends ConexaoMySql {
         try {
             this.conectar();
             return this.insertSQL(
-                "INSERT INTO tbl_funcionario ("
-                    + "id_func,"
+                "INSERT INTO tbl_funcionario ("                    
                     + "func_Nome,"
                     + "func_Cpf,"
                     + "func_Email,"
@@ -38,7 +37,7 @@ public class DAOFuncionario extends ConexaoMySql {
                     + "func_User,"
                     + "func_Senha"
                 + ") VALUES ("
-                    + "'" + pModelFuncionario.getIdFunc() + "',"
+                    
                     + "'" + pModelFuncionario.getFuncNome() + "',"
                     + "'" + pModelFuncionario.getFuncCpf() + "',"
                     + "'" + pModelFuncionario.getFuncEmail() + "',"
@@ -203,8 +202,8 @@ public class DAOFuncionario extends ConexaoMySql {
         try {
             this.conectar();
             return this.executarUpdateDeleteSQL(
-                "UPDATE tbl_funcionarip SET "
-                    + "pk_id_func = '" + pModelFuncionario.getIdFunc() + "',"
+                "UPDATE tbl_funcionario SET "
+                    + "id_func = '" + pModelFuncionario.getIdFunc() + "',"
                     + "func_Nome = '" + pModelFuncionario.getFuncNome() + "',"
                     + "func_Cpf = '" + pModelFuncionario.getFuncCpf() + "',"
                     + "func_Email = '" + pModelFuncionario.getFuncEmail() + "',"

@@ -52,15 +52,15 @@ public class cliente extends javax.swing.JInternalFrame {
     }
     
     private void campos(boolean condicao) {
-        nome.enableInputMethods(condicao);
-        CPF.enableInputMethods(condicao);
-        email.enableInputMethods(condicao);
-        cel.enableInputMethods(condicao);
-        sexo.enableInputMethods(condicao);
-        end.enableInputMethods(condicao);
-        cidade.enableInputMethods(condicao);
-        estado.enableInputMethods(condicao);
-        cep.enableInputMethods(condicao);
+        nome.setEnabled(condicao);
+        CPF.setEnabled(condicao);
+        email.setEnabled(condicao);
+        cel.setEnabled(condicao);
+        sexo.setEnabled(condicao);
+        end.setEnabled(condicao);
+        cidade.setEnabled(condicao);
+        estado.setEnabled(condicao);
+        cep.setEnabled(condicao);
         
     }
     

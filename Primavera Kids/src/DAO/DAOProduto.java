@@ -19,7 +19,6 @@ public class DAOProduto extends ConexaoMySql {
             this.conectar();
             return this.insertSQL(
                 "INSERT INTO tbl_produto ("                    
-                    + "id_Produto,"
                     + "prod_Nome,"
                     + "prod_NomeFornec,"
                     + "prod_DataRegistro,"
@@ -29,8 +28,7 @@ public class DAOProduto extends ConexaoMySql {
                     + "prod_Preco,"
                     + "prod_PrecCompra,"
                     + "prod_Desconto"
-                + ") VALUES ("
-                    + "'" + pModelProduto.getIdProduto() + "',"    
+                + ") VALUES ("                      
                     + "'" + pModelProduto.getProdNome() + "',"
                     + "'" + pModelProduto.getProdNomeFornec() + "',"
                     + "'" + pModelProduto.getProdDataRegistro() + "',"
