@@ -4,13 +4,15 @@
  */
 package GUI;
 
-import DAO.ProdutoDAO;
+import DAO.DAOProduto;
+import controller.ControllerProduto;
 import java.awt.Color;
+import java.util.ArrayList;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
-import model.Produto;
+import model.ModelProduto;
 
 /**
  *
@@ -18,6 +20,10 @@ import model.Produto;
  */
 public class estoque extends javax.swing.JInternalFrame {
 
+    ArrayList<ModelProduto> listaModelProduto = new ArrayList<>();
+    ControllerProduto controllerProduto = new ControllerProduto();
+    ModelProduto modelProduto = new ModelProduto();
+    
     /**
      * Creates new form estoque
      */
@@ -32,25 +38,27 @@ public class estoque extends javax.swing.JInternalFrame {
 
     public void readJTable(){
     
-    DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
+    listaModelProduto = controllerProduto.getListaProdutoController();
+        DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
         modelo.setNumRows(0);
-        ProdutoDAO cdao = new ProdutoDAO();
-        
-        for(Produto p: cdao.read()){
-            
+
+        int cont = listaModelProduto.size();
+        for (int i = 0; i < cont; i++) {
             modelo.addRow(new Object[]{
-                p.getCodigo_produto(),
-                p.getNome_produto(),
-                p.getNome_fornecedor(),
-                p.getCategoria(),
-                p.getTamanho(),
-                p.getData_registro(),
-                p.getPreco_produto(),
-                p.getPreco_compra(),                                
-                p.getDesconto(),
-                p.getQuantidade()
-            });    
-        }}
+                listaModelProduto.get(i).getIdProduto(),
+                listaModelProduto.get(i).getProdNome(),
+                listaModelProduto.get(i).getProdNomeFornec(),
+                listaModelProduto.get(i).getProdCategoria(),
+                listaModelProduto.get(i).getProdTamanho(),
+                listaModelProduto.get(i).getProdDataRegistro(),
+                listaModelProduto.get(i).getProdPreco(),
+                listaModelProduto.get(i).getProdPrecCompra(),
+                listaModelProduto.get(i).getProd_Desconto(),
+                listaModelProduto.get(i).getProdQuantidade()
+
+            });
+        }
+        }
     
     
     /**

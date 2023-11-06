@@ -15,6 +15,7 @@ public class funcionario extends javax.swing.JInternalFrame {
     ControllerFuncionario controllerFuncionario = new ControllerFuncionario();
     ModelFuncionario modelFuncionario = new ModelFuncionario();
     String salvarAlterar;
+    
 
     public funcionario() {
         initComponents();
@@ -141,8 +142,7 @@ public class funcionario extends javax.swing.JInternalFrame {
         modelFuncionario.setFuncTurno(this.tur.getSelectedItem().toString());
         modelFuncionario.setFuncSalario(Double.parseDouble(this.sala.getText().replace(',', '.')));
         modelFuncionario.setFuncUser(this.user.getText());
-        modelFuncionario.setFuncSenha(this.sen.getText());
-        modelFuncionario.setFuncSituacao("Ativo");
+        modelFuncionario.setFuncSenha(this.sen.getText());       
         if (controllerFuncionario.atualizarFuncionarioController(modelFuncionario)) {
             JOptionPane.showMessageDialog(this, "Alterado com sucesso!", "Atenção", JOptionPane.WARNING_MESSAGE);
             this.carregarFuncionario();
@@ -153,6 +153,7 @@ public class funcionario extends javax.swing.JInternalFrame {
         }
     }
 
+    
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -185,7 +186,7 @@ public class funcionario extends javax.swing.JInternalFrame {
         jTable1 = new javax.swing.JTable();
         sal = new javax.swing.JButton();
         alt = new javax.swing.JButton();
-        exc = new javax.swing.JButton();
+        AtivoDesativo = new javax.swing.JButton();
         lim = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
         pesq = new javax.swing.JTextField();
@@ -316,13 +317,15 @@ public class funcionario extends javax.swing.JInternalFrame {
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false, true, true, false, false, false, true, false, true
+                false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
+        jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jTable1.getTableHeader().setReorderingAllowed(false);
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTable1MouseClicked(evt);
@@ -367,11 +370,11 @@ public class funcionario extends javax.swing.JInternalFrame {
             }
         });
 
-        exc.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        exc.setText("Desativar/Ativar");
-        exc.addActionListener(new java.awt.event.ActionListener() {
+        AtivoDesativo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        AtivoDesativo.setText("Desativar/Ativar");
+        AtivoDesativo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                excActionPerformed(evt);
+                AtivoDesativoActionPerformed(evt);
             }
         });
 
@@ -526,7 +529,7 @@ public class funcionario extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addComponent(novo, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(exc)
+                .addComponent(AtivoDesativo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(sal, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(16, 16, 16))
@@ -615,7 +618,7 @@ public class funcionario extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(sal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(alt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(exc)
+                    .addComponent(AtivoDesativo)
                     .addComponent(lim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(novo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -638,8 +641,8 @@ public class funcionario extends javax.swing.JInternalFrame {
         salvarAlterar = "alterar";
         int linha = jTable1.getSelectedRow();
         try {
-            int codigoProd = (int) jTable1.getValueAt(linha, 0);
-            modelFuncionario = controllerFuncionario.getFuncionarioController(codigoProd);
+            int codigoFunci = (int) jTable1.getValueAt(linha, 0);
+            modelFuncionario = controllerFuncionario.getFuncionarioController(codigoFunci);
 
             nome.setText(modelFuncionario.getFuncNome());
             CPF.setText(modelFuncionario.getFuncCpf());
@@ -663,13 +666,32 @@ public class funcionario extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_altActionPerformed
 
-    private void excActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excActionPerformed
-        int linha = jTable1.getSelectedRow();
+    private void AtivoDesativoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtivoDesativoActionPerformed
+       int linha = jTable1.getSelectedRow();
+    if (linha >= 0) {
         int codigoFunci = (int) jTable1.getValueAt(linha, 0);
-        if (controllerFuncionario.excluirFuncionarioController(codigoFunci)) {
-            JOptionPane.showMessageDialog(this, "");
+
+        // Obtenha o funcionário selecionado no jTable ou da maneira apropriada no seu contexto
+        modelFuncionario = controllerFuncionario.getFuncionarioController(codigoFunci);
+
+        // Verifique a situação atual do funcionário e defina a nova situação
+        if ("Ativo".equals(modelFuncionario.getFuncSituacao())) {
+            modelFuncionario.setFuncSituacao("Demitido");
+        } else if ("Demitido".equals(modelFuncionario.getFuncSituacao())) {
+            modelFuncionario.setFuncSituacao("Ativo");
         }
-    }//GEN-LAST:event_excActionPerformed
+
+        // Chame o método para atualizar a situação no banco de dados
+        boolean sucesso = controllerFuncionario.alternarSituacaoFuncionarioController(modelFuncionario);
+
+        if (sucesso) {
+            // Atualize a tabela ou realize ações necessárias após a modificação no banco de dados
+            carregarFuncionario();
+        } else {
+            JOptionPane.showMessageDialog(this, "Erro ao atualizar a situação do funcionário", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    }//GEN-LAST:event_AtivoDesativoActionPerformed
 
     private void limActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limActionPerformed
         limpar();
@@ -694,30 +716,12 @@ public class funcionario extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_cancelarActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-        int linha = jTable1.getSelectedRow();    
-        int codigoProd = (int) jTable1.getValueAt(linha, 0);
-            modelFuncionario = controllerFuncionario.getFuncionarioController(codigoProd);
 
-            nome.setText(modelFuncionario.getFuncNome());
-            CPF.setText(modelFuncionario.getFuncCpf());
-            email.setText(modelFuncionario.getFuncEmail());
-            data.setDate(modelFuncionario.getFuncData());
-            cel.setText(modelFuncionario.getFuncTelefone());
-            tel.setText(modelFuncionario.getFuncTelefone2());
-            sexo.setSelectedItem(modelFuncionario.getFuncSexo());
-            end.setText(modelFuncionario.getFuncEndereco());
-            cidade.setText(modelFuncionario.getFuncCidade());
-            estado.setSelectedItem(modelFuncionario.getFuncEstado());
-            CEP.setText(modelFuncionario.getFuncCep());
-            car.setSelectedItem(modelFuncionario.getFuncCargo());
-            tur.setSelectedItem(modelFuncionario.getFuncTurno());
-            sala.setText(String.valueOf(modelFuncionario.getFuncSalario()));
-            user.setText(modelFuncionario.getFuncUser());
-            sen.setText(modelFuncionario.getFuncSenha());
     }//GEN-LAST:event_jTable1MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AtivoDesativo;
     private javax.swing.JFormattedTextField CEP;
     private javax.swing.JFormattedTextField CPF;
     private javax.swing.JLabel JLabel18;
@@ -731,7 +735,6 @@ public class funcionario extends javax.swing.JInternalFrame {
     private javax.swing.JTextField email;
     private javax.swing.JTextField end;
     private javax.swing.JComboBox<String> estado;
-    private javax.swing.JButton exc;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

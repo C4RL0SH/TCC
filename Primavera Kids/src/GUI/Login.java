@@ -4,17 +4,22 @@
  */
 package GUI;
 
+import javax.swing.JOptionPane;
+import DAO.*;
+import GUI.Menu;
+import controller.ControllerFuncionario;
 import java.beans.PropertyVetoException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 import javax.swing.JOptionPane;
-import DAO.*;
-        
+import model.ModelFuncionario;
+
+import java.util.logging.Logger;
+import java.util.logging.Level;
 
 /**
  *
@@ -22,12 +27,17 @@ import DAO.*;
  */
 public class Login extends javax.swing.JFrame {
 
+    ControllerFuncionario controllerFuncionario = new ControllerFuncionario();
+    ModelFuncionario modelFuncionario = new ModelFuncionario();
+
     /**
      * Creates new form Login
      */
     public Login() {
         initComponents();
     }
+
+    private static final Logger LOGGER = Logger.getLogger(Login.class.getName());
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -41,7 +51,7 @@ public class Login extends javax.swing.JFrame {
         entrar = new javax.swing.JButton();
         sair = new javax.swing.JButton();
         usuario = new javax.swing.JTextField();
-        txtSenha = new javax.swing.JPasswordField();
+        senha = new javax.swing.JPasswordField();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -119,7 +129,7 @@ public class Login extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(senha, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(49, 49, 49)
                         .addComponent(entrar)
@@ -137,7 +147,7 @@ public class Login extends javax.swing.JFrame {
                     .addComponent(jLabel1))
                 .addGap(16, 16, 16)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(senha, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -151,71 +161,55 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
 
-    
     private void sairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sairMouseClicked
-      System.exit(0);
+        System.exit(0);
     }//GEN-LAST:event_sairMouseClicked
 
     private void entrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entrarActionPerformed
         String nome = usuario.getText();
-        String senha = txtSenha.getText();
+        String senh = senha.getText();
         try {
             Class.forName("com.mysql.jdbc.Driver").newInstance();
-        try (Connection con = (Connection) 
-                
-                DriverManager.getConnection("jdbc:mysql://localhost/bdteste","root", ""); 
-                Statement stmt = (Statement) con.createStatement()) {
+            try ( Connection con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/bdteste", "root", "");  Statement stmt = (Statement) con.createStatement()) {
 
-            String query = "select * from tbl_funcionario where user = '"+nome+"' and senha = '"+senha+"'";
-                try (ResultSet rs = stmt.executeQuery(query)) {
+                String query = "select * from tbl_funcionario where func_User = '" + nome + "' and func_Senha = '" + senh + "'";
+                try ( ResultSet rs = stmt.executeQuery(query)) {
                     if (rs.next()) {
-                        String cargo = rs.getString("cargo");                                   
-                        if(cargo.equals("Gerente")){
-                            JOptionPane.showMessageDialog(null,"Conectado com sucesso");
-                            Menu s = new Menu();                            
+                        String situacao = rs.getString("func_Situacao");
+                        if (situacao.equals("Ativo")) {
+                            JOptionPane.showMessageDialog(null, "Conectado com sucesso");
+                            Menu s = new Menu();
                             s.setVisible(true);
-                            Menu.lblusuario.setText(rs.getString(2));
-                            this.dispose();
-                        }
-                        else if(cargo.equals("Caixa")){
-                        JOptionPane.showMessageDialog(null,"Conectado com sucesso");
-                            Menu s = new Menu();                            
-                            s.setVisible(true);
-                            Menu.Estoque.setVisible(false);
-                            Menu.Funcionario.setVisible(false);
-                            Menu.Produto.setVisible(false);
-                            Menu.lblusuario.setText(rs.getString(2));
-                            this.dispose();
-                        
-                        }
-                        else if(cargo.equals("Estoquista")){
-                        JOptionPane.showMessageDialog(null,"Conectado com sucesso");
-                            Menu s = new Menu();                            
-                            s.setVisible(true);
-                            Menu.cli.setVisible(false);
-                            Menu.Produto.setVisible(false);
-                            Menu.Funcionario.setVisible(false);
-                            Menu.Venda.setVisible(false);
-                            Menu.lblusuario.setText(rs.getString(2));
-                            this.dispose();
-                        
+
+                            String cargo = rs.getString("func_Cargo");
+                            if (cargo.equals("Gerente")) {
+                                Menu.lblusuario.setText(rs.getString(18));
+                                this.dispose();
+                            } else if (cargo.equals("Caixa")) {
+                                Menu.Estoque.setVisible(false);
+                                Menu.Funcionario.setVisible(false);
+                                Menu.Produto.setVisible(false);
+                                Menu.lblusuario.setText(rs.getString(18));
+                                this.dispose();
+                            } else if (cargo.equals("Estoquista")) {
+                                Menu.cli.setVisible(false);
+                                Menu.Produto.setVisible(false);
+                                Menu.Funcionario.setVisible(false);
+                                Menu.Venda.setVisible(false);
+                                Menu.lblusuario.setText(rs.getString(18));
+                                this.dispose();
+                            }
+                        } else if (situacao.equals("Demitido")) {
+                            JOptionPane.showMessageDialog(this, "O Funcionário não tem mais acesso ao sistema.", "Atenção", JOptionPane.WARNING_MESSAGE);
                         }
                     }
-                    else {
-                        JOptionPane.showMessageDialog(null,"Usuário e/ou senha incorretos.");
-                        usuario.setText("");
-                        txtSenha.setText("");
-                    }   } catch (PropertyVetoException ex) {
+                } catch (Exception ex) {
                     Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
                 }
-      
-       
-        }
+            }
         } catch (SQLException | ClassNotFoundException | InstantiationException | IllegalAccessException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-    
     }//GEN-LAST:event_entrarActionPerformed
 
     /**
@@ -246,10 +240,8 @@ public class Login extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Login().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new Login().setVisible(true);
         });
     }
 
@@ -260,7 +252,109 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton sair;
-    private javax.swing.JPasswordField txtSenha;
+    private javax.swing.JPasswordField senha;
     private javax.swing.JTextField usuario;
     // End of variables declaration//GEN-END:variables
 }
+/*String nome = usuario.getText();
+        String senh = senha.getText();
+        try {
+            Class.forName("com.mysql.jdbc.Driver").newInstance();
+            try ( Connection con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/bdteste", "root", "");  Statement stmt = (Statement) con.createStatement()) {
+
+                String query = "select * from tbl_funcionario where func_User = '" + nome + "' and func_Senha = '" + senh + "'";
+                try ( ResultSet rs = stmt.executeQuery(query)) {
+                    if (rs.next()) {
+                        String situacao = rs.getString("func_Situacao");
+                        if (situacao.equals("Ativo")) {
+                            JOptionPane.showMessageDialog(null, "Conectado com sucesso");
+                            Menu s = new Menu();
+                            s.setVisible(true);
+
+                            String cargo = rs.getString("func_Cargo");
+                            if (cargo.equals("Gerente")) {
+
+                                Menu.lblusuario.setText(rs.getString(18));
+                                this.dispose();
+                            } else if (cargo.equals("Caixa")) {
+                                Menu.Estoque.setVisible(false);
+                                Menu.Funcionario.setVisible(false);
+                                Menu.Produto.setVisible(false);
+                                Menu.lblusuario.setText(rs.getString(18));
+                                this.dispose();
+
+                            } else if (cargo.equals("Estoquista")) {
+                                Menu.cli.setVisible(false);
+                                Menu.Produto.setVisible(false);
+                                Menu.Funcionario.setVisible(false);
+                                Menu.Venda.setVisible(false);
+                                Menu.lblusuario.setText(rs.getString(18));
+                                this.dispose();
+                            }
+
+                        } else if (situacao.equals("Demitido")) {
+                            JOptionPane.showMessageDialog(this, "O Funcionário não tem mais acesso ao sistema.", "Atenção", JOptionPane.WARNING_MESSAGE);
+                        }
+
+                    }
+                } catch (Exception ex) {
+                    Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+            }
+        } catch (SQLException | ClassNotFoundException | InstantiationException | IllegalAccessException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }*/
+
+ /*modelFuncionario.setFuncUser(usuario.getText());
+        modelFuncionario.setFuncSenha(senha.getText());
+
+        if (controllerFuncionario.getValidarFuncionarioController(modelFuncionario)) {
+            // Validação bem-sucedida
+
+            String situacao = modelFuncionario.getFuncSituacao();
+
+            if ("Ativo".equals(situacao)) {
+                // Funcionário está ativo, continue
+                JOptionPane.showMessageDialog(this, "Conectado com sucesso");
+
+                // Obtenha informações adicionais, como cargo, se necessário
+                String cargo = modelFuncionario.getFuncCargo();
+
+                // Crie uma instância da classe Menu dentro de um bloco try-catch
+                try {
+                    Menu s = new Menu();
+                    s.setVisible(true);
+
+                    if ("Gerente".equals(cargo)) {
+                        // Configure a interface para o cargo de Gerente
+                        Menu.lblusuario.setText(modelFuncionario.getFuncNome());
+                    } else if ("Caixa".equals(cargo)) {
+                        // Configure a interface para o cargo de Caixa
+                        Menu.Estoque.setVisible(false);
+                        Menu.Funcionario.setVisible(false);
+                        Menu.Produto.setVisible(false);
+                        Menu.lblusuario.setText(modelFuncionario.getFuncNome());
+                    } else if ("Estoquista".equals(cargo)) {
+                        // Configure a interface para o cargo de Estoquista
+                        Menu.cli.setVisible(false);
+                        Menu.Produto.setVisible(false);
+                        Menu.Funcionario.setVisible(false);
+                        Menu.Venda.setVisible(false);
+                        Menu.lblusuario.setText(modelFuncionario.getFuncNome());
+                    }
+
+                    this.dispose(); // Feche a janela de login
+                } catch (PropertyVetoException ex) {
+                    // Lidar com a exceção
+
+                }
+            } else if ("Demitido".equals(situacao)) {
+                // Funcionário foi demitido, exiba a mensagem
+                JOptionPane.showMessageDialog(this, "Funcionário não tem mais acesso ao sistema!");
+            }
+        } else {
+            // Validação malsucedida
+
+            JOptionPane.showMessageDialog(this, "Credenciais inválidas", "Erro", JOptionPane.ERROR_MESSAGE);
+        }*/

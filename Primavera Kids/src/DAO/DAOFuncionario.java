@@ -2,12 +2,16 @@ package DAO;
 
 import model.ModelFuncionario;
 import connection.ConexaoMySql;
+import java.util.logging.Logger;
+import java.sql.SQLException;
 import java.util.ArrayList;
 /**
 *
 * @author Carlos
 */
 public class DAOFuncionario extends ConexaoMySql {
+    
+    private static final Logger logger = Logger.getLogger(DAOFuncionario.class.getName());
 
     /**
     * grava Funcionario
@@ -254,4 +258,47 @@ public class DAOFuncionario extends ConexaoMySql {
             this.fecharConexao();
         }
     }
+
+    public boolean situacaoFuncionarioDAO(ModelFuncionario pModelFuncionario) {
+    try {
+        this.conectar();
+        boolean atualizacaoBemSucedida = this.executarUpdateDeleteSQL(
+            "UPDATE tbl_funcionario SET "
+                + "func_Situacao = '" + pModelFuncionario.getFuncSituacao() + "'"
+                + " WHERE "
+                + "id_func = " + pModelFuncionario.getIdFunc()
+                + ";"
+        );
+        }catch(Exception e){
+            e.printStackTrace();
+            return false;
+        }finally{
+            this.fecharConexao();
+        }
+        return true;
+     
+    }
+
+    public boolean validarFunionarioDAO(ModelFuncionario pModelFuncionario) {
+    ModelFuncionario modelFuncionario = new ModelFuncionario();
+        try {
+            this.conectar();
+            this.executarSQL(
+                "SELECT * From tbl_funcionario"                
+                 + " WHERE"
+                     + " func_User = '" + modelFuncionario.getFuncUser() + "'"
+                     + " AND func_Senha = '" + modelFuncionario.getFuncSenha()+ "'"
+                + ";"
+            );
+
+            
+        }catch(Exception e){
+            e.printStackTrace();
+            return true;
+        }finally{
+            this.fecharConexao();
+            return false;
+        }
+        
+}
 }

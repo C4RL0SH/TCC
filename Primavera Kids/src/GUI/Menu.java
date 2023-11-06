@@ -60,6 +60,8 @@ public class Menu extends javax.swing.JFrame {
         Funcionario = new javax.swing.JMenu();
         Produto = new javax.swing.JMenu();
         Venda = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
         Descon = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -81,8 +83,11 @@ public class Menu extends javax.swing.JFrame {
             .addGap(0, 690, Short.MAX_VALUE)
         );
 
+        jPanel1.setMaximumSize(new java.awt.Dimension(183, 183));
+
         lblusuario.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         lblusuario.setText("Usuario");
+        lblusuario.setName(""); // NOI18N
 
         lbldata.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         lbldata.setText("Data");
@@ -106,12 +111,12 @@ public class Menu extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(86, 86, 86)
-                .addComponent(lblusuario)
-                .addGap(108, 108, 108)
+                .addComponent(lblusuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(lbldata)
                 .addGap(29, 29, 29)
                 .addComponent(lblhora)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(460, Short.MAX_VALUE))
         );
 
         jMenuBar1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -164,6 +169,18 @@ public class Menu extends javax.swing.JFrame {
                 VendaMouseClicked(evt);
             }
         });
+
+        jMenuItem1.setText("Efetuar");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        Venda.add(jMenuItem1);
+
+        jMenuItem2.setText("Alterar/Excluir/Visualizar");
+        Venda.add(jMenuItem2);
+
         jMenuBar1.add(Venda);
 
         Descon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/door_out.png"))); // NOI18N
@@ -257,13 +274,21 @@ public class Menu extends javax.swing.JFrame {
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
        
-        Date dataHoraAtual = new Date(); 
+        Date dataHora = new Date(); 
+        String hora = new SimpleDateFormat("HH:mm:ss").format(dataHora);
+        lblhora.setText(hora);
+        
+       Date dataHoraAtual = new Date();       
        String data = new SimpleDateFormat("dd/MM/yyyy").format(dataHoraAtual);
        lbldata.setText(data);
        Timer time = new Timer( 1000, new horaatual());
        time.start();
        
     }//GEN-LAST:event_formWindowActivated
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -311,6 +336,8 @@ public class Menu extends javax.swing.JFrame {
     public static javax.swing.JMenu Venda;
     public static javax.swing.JMenu cli;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lbldata;
     private javax.swing.JLabel lblhora;
